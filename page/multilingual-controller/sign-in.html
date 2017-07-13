@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Listing Express | Documentation</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/main.min.css">
-    <link rel="stylesheet" href="css/skins.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <link rel="stylesheet" href="../../css/skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <a href="index.html" class="logo">
+                <a href="../../index.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>L</b>E</span>
                     <!-- logo for regular state and mobile devices -->
@@ -60,8 +60,8 @@
             <div class="sidebar">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="nav sidebar-menu">
-                    <li class="active"><a href="index.html">Introduction</a></li>
-                    <li class="treeview">
+                    <li><a href="../../index.html">Introduction</a></li>
+                    <li class="treeview active">
                         <a href="#">
                             <span>Multilingual controller</span>
                             <span class="pull-right-container">
@@ -69,12 +69,12 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li><a href="page/multilingual-controller/how-to-run.html">How To Run</a></li>
-                            <li><a href="page/multilingual-controller/sign-in.html">Sign In</a></li>
-                            <li><a href="page/multilingual-controller/developer-module.html">Developer Module</a></li>
-                            <li><a href="page/multilingual-controller/translator-module.html">Translator Module</a></li>
-                            <li><a href="page/multilingual-controller/compiler-module.html">Compiler Module</a></li>
-                            <li><a href="page/multilingual-controller/admin-module.html">Admin Module</a></li>
+                            <li><a href="how-to-run.html">How To Run</a></li>
+                            <li class="active"><a href="sign-in.html">Sign In</a></li>
+                            <li><a href="developer-module.html">Developer Module</a></li>
+                            <li><a href="translator-module.html">Translator Module</a></li>
+                            <li><a href="compiler-module.html">Compiler Module</a></li>
+                            <li><a href="admin-module.html">Admin Module</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -102,46 +102,51 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-10">
-                    <div class="content-header" id="lx-document">
-                        <h1 class="h1-header">
-                                Listing Express Documentation
-                                <small>Version 1.0</small>
-                            </h1>
+                    <div class="content-header" id="section-0">
+                        <h1 class="h1-header">Sign in</h1>
                     </div>
                     <div class="content body">
-                        <section id="introduction">
-                            <h2 class="page-header"><a href="#introduction">Introduction</a></h2>
-                            <p class="lead">
-                                A community side-project with the aim of providing a single, consistent platform for users to list news/ads and communicate each other across multiple domains including goods, jobs, renting, etc. Cutting-edge technologies are deployed to bring the best convenient and comfortable feelings to users while many components can be utilized for many other projects. Timeline: started in Spring 2016; expect 1st release in Spring 2019 Team: currently 3 members
-                            </p>
+                        <section id="section-1">
+                            <h2 class="page-header"><a href="#section-1">1. UI</a></h2>
+                            <p class="lead">Open <code><u><a href="http://localhost:3000">http://localhost:3000</a></u></code> to open Multilingual Controller.
+                                <br> Some demo account:</p>
+                            <pre class="hierarchy bring-up" style="max-width: 1195px;"><code class="language-bash" data-lang="bash">- Role: username/password
+- Admin: 1/12345789
+- Two_role: 2/123456789
+- Developer_role: 3/123456789
+- Translator_role: 4/123456789
+</code></pre>
+                            <br>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-ui.png" alt="Sign in">
                         </section>
-                        <!-- /#introduction -->
-                        <!-- ============================================================= -->
-                        <section id="technologies">
-                            <h2 class="page-header"><a href="#technologies">Technologies</a></h2>
-                            <ul>
-                                <li><b>Programming:</b> <code>TypeScript, Meteor, Angular 2, Semantic UI, D3.js</code></li>
-                                <li><b>Database:</b> <code>Couchbase/CouchDB, MySQL</code></li>
-                                <li><b>Platform:</b> <code>Google Cloud Platform</code></li>
-                                <li><b>Others:</b> <code>Apache ASF, NPM, GitLab, Slack, etc.</code></li>
-                            </ul>
-                        </section>
-                        <!-- ============================================================= -->
-                        <section id="ready">
-                            <h2 class="page-header"><a href="#ready">Ready components</a></h2>
-                            <ul>
-                                <li><b><u>Multilingual controller:</u></b> A JS-based module that supports product development and deployment in multiple languages without limited to the proficiency of developer languages. Texts/messages/labels/etc. are collected and translated to be consistent across the entire project with automatic functions such as auto-scan, auto-translate, and auto-compile.</li>
-                                <li><b><u>vnSegmenter:</u></b> The first JavaScript-based module that implements the fastest algorithm and utilizes the meaning-correlation scores from <code>Google ‘word2vec’</code> for word segmentation in Vietnamese. The aim is identifying more accurate multisyllabic words since a Vietnamese word may consist of a series of monosyllabic words separated by spaces.</li>
-                            </ul>
+                        <section id="section-2">
+                            <h2 class="page-header"><a href="#section-2">2. Sign in failed</a></h2>
+                            <p class="lead">A message on the top notification sign in failed.</p>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-failed.png" alt="Sign in">
                         </section>
                         <!-- ============================================================= -->
-                        <section id="ongoing">
-                            <h2 class="page-header"><a href="#ongoing">Ongoing components</a></h2>
-                            <ul>
-                                <li><b><u>1-m search:</u></b> A client-side module that provide an engine to search keywords from various other websites and combine results into a display framework. Guest mode allows running directly from the user browser without any further settings.</li>
-                                <li><b><u>Buyer-seller messaging:</u></b> A JS-based module to allow the communications between buyers and sellers through encrypted alias emails to increase security. The module allows users to communicate freely before reveal the true information for a deal.</li>
-                                <li><b><u>dbAPI:</u></b> A set of unique APIs for every corresponding <code>CRUD</code> operations in database transactions. APIs are configurable and work across <code>DBMSs</code> such as <code>MySQL</code> and <code>CouchDB</code>.</li>
-                            </ul>
+                        <section id="section-3">
+                            <h2 class="page-header"><a href="#section-3">3. Sign in with Developer role</a></h2>
+                            <p class="lead">Go to Developer Module.</p>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-developer.png" alt="Sign in">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-4">
+                            <h2 class="page-header"><a href="#section-4">4. Sign in with Translator role</a></h2>
+                            <p class="lead">Go to Translator Module.</p>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-translator.png" alt="Sign in">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-5">
+                            <h2 class="page-header"><a href="#section-5">5. Sign in with two role</a></h2>
+                            <p class="lead">Default go to Developer Module. User can choose other module by choose the option box in the header.</p>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-two-role.png" alt="Sign in">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-6">
+                            <h2 class="page-header"><a href="#section-6">6 .Sign in with Admin role</a></h2>
+                            <p class="lead">Default go to Compiler Module. User can choose other module by choose the option box in the header.</p>
+                            <img class="img-responsive pad inside-image " src="images/sign-in-admin.png" alt="Sign in">
                         </section>
                     </div>
                 </div>
@@ -149,11 +154,13 @@
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#lx-document">Listing Express Documentation</a></li>
-                            <li><a href="#introduction">Introduction</a></li>
-                            <li><a href="#technologies">Technologies</a></li>
-                            <li><a href="#ready">Ready components</a></li>
-                            <li><a href="#ongoing">Ongoing components</a></li>
+                            <li class="h1 active custom-title"><a href="#section-0">Sign in</a></li>
+                            <li><a href="#section-1">1. UI</a></li>
+                            <li><a href="#section-2">2. Sign in failed</a></li>
+                            <li><a href="#section-3">3. Sign in with Developer role</a></li>
+                            <li><a href="#section-4">4. Sign in with Translator role</a></li>
+                            <li><a href="#section-5">5. Sign in with two role</a></li>
+                            <li><a href="#section-6">6. Sign in with Admin role</a></li>
                         </ul>
                     </div>
                 </div>
@@ -170,13 +177,12 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 2.2.3 -->
-    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="../../js/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="css/bootstrap/js/bootstrap.min.js"></script>
-    
-    <script src="js/app.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script src="js/docs.js"></script>
+    <script src="../../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <script src="../../js/docs.js"></script>
 </body>
 
 </html>

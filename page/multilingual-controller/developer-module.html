@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Listing Express | Documentation</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <link rel="stylesheet" href="../../css/skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy" data-offset="50">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <a href="../../index.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>L</b>E</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">Listing Express</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <ul class="nav navbar-nav hidden-xs">
+                    <li><a href="#">Feature</a></li>
+                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+                <div class="navbar-custom-menu hidden-xs">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="nav sidebar-menu">
+                    <li><a href="../../index.html">Introduction</a></li>
+                    <li class="treeview active">
+                        <a href="#">
+                            <span>Multilingual controller</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="sign-in.html">Sign In</a></li>
+                            <li class="active"><a href="developer-module.html">Developer Module</a></li>
+                            <li><a href="translator-module.html">Translator Module</a></li>
+                            <li><a href="compiler-module.html">Compiler Module</a></li>
+                            <li><a href="admin-module.html">Admin Module</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>vnSegmenter</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="#">How To Run</a></li>
+                            <li><a href="#component-main-header">Dataset</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#advice">1-m search</a></li>
+                    <li><a href="#layout">Buyer-seller messaging</a></li>
+                    <li><a href="#adminlte-options">db API</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#license">License</a></li>
+                </ul>
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="content-header" id="section-0">
+                        <h1 class="h1-header">Developer Module</h1>
+                        <p class="lead">To <code>add, edit, delete</code> texts. Support <code>auto scan, uniquify</code> texts.</p>
+                    </div>
+                    <div class="content body">
+                        <section id="section-1">
+                            <h2 class="page-header"><a href="#section-1">1. UI</a></h2>
+                            <p class="lead">Employee has role <code>admin</code> or <code>developer</code> or <code>two role (developer; translator)</code> can access to this module.</p>
+                            <img class="img-responsive pad inside-image " src="images/Developer-Module.png" alt="UI">
+                        </section>
+                        <section id="section-2">
+                            <h2 class="page-header"><a href="#section-2">2. Load projects</a></h2>
+                            <p class="lead">Choose <code>projects</code> in the select projects box in the header.
+                                <br> If employee sign in with <code>Project PIN</code>, only this project will be load.
+                                <br> If employee sign in with <code>Admin role</code>, all projects will be load. Otherwise, only projects of this employee will be load.
+                            </p>
+                            <img class="img-responsive pad inside-image " src="images/load-projects.png" alt="Load projects">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-3">
+                            <h2 class="page-header"><a href="#section-3">3. Load components</a></h2>
+                            <p class="lead">Can choose <code>components</code> after choose <code>projects</code>.
+                                <br> If employee sign in with <code>Admin role</code>, all components of selected project will be load. Otherwise, only components of selected project of this employee will be load.
+                            </p>
+                            <img class="img-responsive pad inside-image " src="images/load-components.png" alt="Load components">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-4">
+                            <h2 class="page-header"><a href="#section-4">4. Load tasks</a></h2>
+                            <p class="lead">Can choose <code>tasks</code> after choose <code>components</code>.
+                                <br> If employee sign in with <code>Admin role</code>, all tasks of selected component will be load. Otherwise, only tasks of selected component of this employee will be load.
+                            </p>
+                            <img class="img-responsive pad inside-image " src="images/load-tasks.png" alt="Load tasks">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-5">
+                            <h2 class="page-header"><a href="#section-5">5. Add new texts</a></h2>
+                            <p class="lead">When selected <code>tasks</code>, <code>texts</code> will be load.
+                                <br> To add new <code>texts</code>, input <code>texts string</code> in the text area and select <code>texts language</code>.
+                            </p>
+                            <img class="img-responsive pad inside-image " src="images/add-texts-1.png" alt="Add new texts">
+                            <p class="lead">Then click <code>Add</code>, notification bar will be open to show result add texts.</p>
+                            <img class="img-responsive pad inside-image " src="images/add-texts-2.png" alt="Add new texts result">
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="section-6">
+                            <h2 class="page-header"><a href="#section-6">6 .Edit texts</a></h2>
+                            <p class="lead">Click icon <code>Edit</code> in the right side of row to edit text.</p>
+                            <img class="img-responsive pad inside-image " src="images/edit-texts-1.png" alt="Edit texts">
+                            <p class="lead">Then click <code>Save</code> to save edit texts, notification bar will be open to show result edit texts. Or click <code>Cancel</code> to cancel edit texts.</p>
+                            <img class="img-responsive pad inside-image " src="images/edit-texts-2.png" alt="Edit texts result">
+                        </section>
+                        <section id="section-7">
+                            <h2 class="page-header"><a href="#section-7">7 .Delete texts</a></h2>
+                            <p class="lead">To delete text, choose it by click checkbox at the right row, then click <code>Delete</code> icon in the header row to delete all selected texts. You can delete all texts by click checkbox in the header row to select all.</p>
+                            <img class="img-responsive pad inside-image " src="images/delete-texts-1.png" alt="Delete texts">
+                            <p class="lead">Then click <code>Delete</code>, a layer to confirm delete will be show. </p>
+                            <img class="img-responsive pad inside-image " src="images/confirm-delete.png" alt="Edit texts result">
+                            <p class="lead">Then click <code>Yes</code> in confirm delete, notification bar will be open to show result delete texts.</p>
+                            <img class="img-responsive pad inside-image " src="images/delete-texts-2.png" alt="Delete texts">
+                        </section>
+                        <section id="section-8">
+                            <h2 class="page-header"><a href="#section-8">8 .Auto scan</a></h2>
+                            <p class="lead">Auto scan will scan all text in file or folder input.
+                                <br> User can edit JSON configuration file by upload custom JSON file with name has format <code>emplyeeId.autoscan.conf.json</code>. Otherwise, process will be use default JSON file with name <code>autoscan.conf.json.</code>
+                                <br>
+                                <br>Example JSON file:
+                            </p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
+    "extensions": {
+        "html": [
+            ["&lt;strong&gt;", "&lt;/strong&gt;"],
+            ["&lt;h1&gt;", "&lt;/h1&gt;"],
+            ["&lt;HTML-TAG-NAME&gt;", "&lt;/HTML-TAG-NAME&gt;"],
+            ["&lt;YOUR-CUSTOM-TAG-DEFINE&gt;", "&lt;/YOUR-CUSTOM-TAG-DEFINE&gt;"]
+        ],
+        "json": [
+            ["[", "]"],
+            ["{", "}"],
+            ["YOUR-CUSTOM-TAG-DEFINE", "YOUR-CUSTOM-TAG-DEFINE"]
+        ],
+        "OTHER-FILE-EXTENSIONS" : []
+    },
+    "public": [
+        ["&lt;trans&gt;", "&lt;/trans&gt;"],
+        ["&lt;PUBLIC-TAG-ALL-FILES-USE&gt;", "&lt;/PUBLIC-TAG-ALL-FILE-USE&gt;"]
+    ]
+}
+</code></pre>
+                            <p class="lead">Click <code>Auto scan</code> then choose <code>Scan File</code> or <code>Scan Folder</code></p>
+                            <img class="img-responsive pad inside-image " src="images/auto-scan-1.png" alt="Auto scan">
+                            <p class="lead"><b>Scan File</b></p>
+                            <img class="img-responsive pad inside-image " src="images/auto-scan-file.png" alt="Auto scan">
+                            <p class="lead"><b>Scan Folder</b>, show text file by file.</p>
+                            <img class="img-responsive pad inside-image " src="images/auto-scan-folder.png" alt="Auto scan">
+                            <p class="lead">Then click <code>Save All</code> to save all texts, or click <code>Cancel</code> to cancel auto scan texts. If click <code>Save All</code> a layer to confirm <code>overwrite all</code> texts will be show.</p>
+                            <img class="img-responsive pad inside-image " src="images/confirm-overwrite.png" alt="Auto scan">
+                            <p class="lead">Now, if all texts <code>no translation</code>, auto scan will be <code>overwrite all</code> texts.
+                                <br>Otherwise, a messages <code>Texts is translated, can not overwrite it. You can do it by manual.</code> will be send notification bar.</p>
+                        </section>
+                        <section id="section-9">
+                            <h2 class="page-header"><a href="#section-9">9 .Uniquify</a></h2>
+                            <p class="lead">To check <code>duplicate</code> texts.</p>
+                            <img class="img-responsive pad inside-image " src="images/uniquify.png" alt="Uniquify">
+                            <p class="lead">Then click <code>Delete</code> to delete duplicate texts, notification bar will be open to show result delete texts. Or click <code>Cancel</code> to cancel uniquify texts.</p>
+                            <img class="img-responsive pad inside-image " src="images/uniquify-2.png" alt="Uniquify">
+                        </section>
+                    </div>
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    <div class="sidebar custom-menu-scroll" id="scrollspy">
+                        <!-- sidebar menu: : style can be found in sidebar.less -->
+                        <ul class="nav sidebar-menu">
+                            <li class="h1 active custom-title"><a href="#section-0">Developer Module</a></li>
+                            <li><a href="#section-1">1. UI</a></li>
+                            <li><a href="#section-2">2. Load projects</a></li>
+                            <li><a href="#section-3">3. Load components</a></li>
+                            <li><a href="#section-4">4. Load tasks</a></li>
+                            <li><a href="#section-5">5. Add new texts</a></li>
+                            <li><a href="#section-6">6. Edit texts</a></li>
+                            <li><a href="#section-7">7. Delete texts</a></li>
+                            <li><a href="#section-8">8. Auto scan</a></li>
+                            <li><a href="#section-9">9. Uniquify</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Main content -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right">
+                Copyright &copy; 2017. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 2.2.3 -->
+    <script src="../../js/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <script src="../../js/docs.js"></script>
+</body>
+
+</html>

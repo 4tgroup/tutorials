@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Listing Express | Documentation</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" type="image/x-icon" href="images/icon.png">
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/main.min.css">
-    <link rel="stylesheet" href="css/skins.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <link rel="stylesheet" href="../../css/skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <a href="index.html" class="logo">
+                <a href="../../index.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>L</b>E</span>
                     <!-- logo for regular state and mobile devices -->
@@ -60,8 +60,8 @@
             <div class="sidebar">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="nav sidebar-menu">
-                    <li class="active"><a href="index.html">Introduction</a></li>
-                    <li class="treeview">
+                    <li><a href="../../index.html">Introduction</a></li>
+                    <li class="treeview active">
                         <a href="#">
                             <span>Multilingual controller</span>
                             <span class="pull-right-container">
@@ -69,12 +69,12 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li><a href="page/multilingual-controller/how-to-run.html">How To Run</a></li>
-                            <li><a href="page/multilingual-controller/sign-in.html">Sign In</a></li>
-                            <li><a href="page/multilingual-controller/developer-module.html">Developer Module</a></li>
-                            <li><a href="page/multilingual-controller/translator-module.html">Translator Module</a></li>
-                            <li><a href="page/multilingual-controller/compiler-module.html">Compiler Module</a></li>
-                            <li><a href="page/multilingual-controller/admin-module.html">Admin Module</a></li>
+                            <li class="active"><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="sign-in.html">Sign In</a></li>
+                            <li><a href="developer-module.html">Developer Module</a></li>
+                            <li><a href="translator-module.html">Translator Module</a></li>
+                            <li><a href="compiler-module.html">Compiler Module</a></li>
+                            <li><a href="admin-module.html">Admin Module</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -102,46 +102,61 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-10">
-                    <div class="content-header" id="lx-document">
-                        <h1 class="h1-header">
-                                Listing Express Documentation
-                                <small>Version 1.0</small>
-                            </h1>
+                    <div class="content-header" id="how-to-run">
+                        <h1 class="h1-header">How to run</h1>
                     </div>
                     <div class="content body">
-                        <section id="introduction">
-                            <h2 class="page-header"><a href="#introduction">Introduction</a></h2>
+                        <section id="requirement">
+                            <h2 class="page-header"><a href="#requirement">1. Requirement</a></h2>
+                            <ul>
+                                <li><b>MySQL:</b> <a href="https://www.mysql.com" target="_blank">https://www.mysql.com</a></li>
+                                <li><b>Node.js:</b> <a href="https://nodejs.org" target="_blank">https://nodejs.org</a></li>
+                            </ul>
+                        </section>
+                        <section id="install">
+                            <h2 class="page-header"><a href="#install">2. Install</a></h2>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ git clone https://gitlab.com/4t_group2/WebAppStudio.git</code></pre>
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="import-database">
+                            <h2 class="page-header"><a href="#import-database">3. Import database</a></h2>
                             <p class="lead">
-                                A community side-project with the aim of providing a single, consistent platform for users to list news/ads and communicate each other across multiple domains including goods, jobs, renting, etc. Cutting-edge technologies are deployed to bring the best convenient and comfortable feelings to users while many components can be utilized for many other projects. Timeline: started in Spring 2016; expect 1st release in Spring 2019 Team: currently 3 members
+                                Open file <code>"server/helper/multi_db.sql"</code> and import it to MySQL database.
                             </p>
                         </section>
-                        <!-- /#introduction -->
                         <!-- ============================================================= -->
-                        <section id="technologies">
-                            <h2 class="page-header"><a href="#technologies">Technologies</a></h2>
-                            <ul>
-                                <li><b>Programming:</b> <code>TypeScript, Meteor, Angular 2, Semantic UI, D3.js</code></li>
-                                <li><b>Database:</b> <code>Couchbase/CouchDB, MySQL</code></li>
-                                <li><b>Platform:</b> <code>Google Cloud Platform</code></li>
-                                <li><b>Others:</b> <code>Apache ASF, NPM, GitLab, Slack, etc.</code></li>
-                            </ul>
+                        <section id="configure">
+                            <h2 class="page-header"><a href="#configure">4. Configure</a></h2>
+                            <p class="lead">
+                                Open file <code>"server/config/dbConnection.js"</code> and config it:
+                            </p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">host: 'YOUR_HOST',
+user: 'YOUR_DATABASE_USER',
+password: 'YOUR_PASSWORD',
+database: 'DATABASE_NAME'</code></pre>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="ready">
-                            <h2 class="page-header"><a href="#ready">Ready components</a></h2>
-                            <ul>
-                                <li><b><u>Multilingual controller:</u></b> A JS-based module that supports product development and deployment in multiple languages without limited to the proficiency of developer languages. Texts/messages/labels/etc. are collected and translated to be consistent across the entire project with automatic functions such as auto-scan, auto-translate, and auto-compile.</li>
-                                <li><b><u>vnSegmenter:</u></b> The first JavaScript-based module that implements the fastest algorithm and utilizes the meaning-correlation scores from <code>Google ‘word2vec’</code> for word segmentation in Vietnamese. The aim is identifying more accurate multisyllabic words since a Vietnamese word may consist of a series of monosyllabic words separated by spaces.</li>
-                            </ul>
+                        <section id="run-server-api">
+                            <h2 class="page-header"><a href="#run-server-api">5. Run server API</a></h2>
+                            <p class="lead">Open cmd, cd to <code>"server"</code> folder and run:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm install</code></pre>
+                            <p class="lead">to install node_modules.
+                                <br>Then, run:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm start</code></pre>
+                            <p class="lead">to start server.
+                                <br>Now, server start on port 5000.</p>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="ongoing">
-                            <h2 class="page-header"><a href="#ongoing">Ongoing components</a></h2>
-                            <ul>
-                                <li><b><u>1-m search:</u></b> A client-side module that provide an engine to search keywords from various other websites and combine results into a display framework. Guest mode allows running directly from the user browser without any further settings.</li>
-                                <li><b><u>Buyer-seller messaging:</u></b> A JS-based module to allow the communications between buyers and sellers through encrypted alias emails to increase security. The module allows users to communicate freely before reveal the true information for a deal.</li>
-                                <li><b><u>dbAPI:</u></b> A set of unique APIs for every corresponding <code>CRUD</code> operations in database transactions. APIs are configurable and work across <code>DBMSs</code> such as <code>MySQL</code> and <code>CouchDB</code>.</li>
-                            </ul>
+                        <section id="run-client">
+                            <h2 class="page-header"><a href="#run-client">6. Run client</a></h2>
+                            <p class="lead">Open cmd, cd to <code>"client "</code> folder and run:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm install</code></pre>
+                            <p class="lead">to install node_modules.
+                                <br>Then, run:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm start</code></pre>
+                            <p class="lead">to start client .
+                                <br>Now, client start on port 3000. </p>
+                            <p class="lead">Open <code><u><a href="http://localhost:3000" target="_blank">http://localhost:3000</a></u></code> to open Multilingual Controller.</p>
                         </section>
                     </div>
                 </div>
@@ -149,11 +164,13 @@
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#lx-document">Listing Express Documentation</a></li>
-                            <li><a href="#introduction">Introduction</a></li>
-                            <li><a href="#technologies">Technologies</a></li>
-                            <li><a href="#ready">Ready components</a></li>
-                            <li><a href="#ongoing">Ongoing components</a></li>
+                            <li class="h1 active custom-title"><a href="#how-to-run">How To Run</a></li>
+                            <li><a href="#requirement">1. Requirement</a></li>
+                            <li><a href="#install">2. Install</a></li>
+                            <li><a href="#import-database">3. Import database</a></li>
+                            <li><a href="#configure">4. Configure</a></li>
+                            <li><a href="#run-server-api">5. Run server API</a></li>
+                            <li><a href="#run-client">6. Run client</a></li>
                         </ul>
                     </div>
                 </div>
@@ -170,13 +187,12 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 2.2.3 -->
-    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="../../js/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="css/bootstrap/js/bootstrap.min.js"></script>
-    
-    <script src="js/app.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script src="js/docs.js"></script>
+    <script src="../../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <script src="../../js/docs.js"></script>
 </body>
 
 </html>
