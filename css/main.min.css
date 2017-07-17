@@ -101,7 +101,7 @@ body {
 .content-wrapper,
 .right-side {
     min-height: 100%;
-    background-color: #ecf0f5;
+    background-color: #fafafa;
     z-index: 800
 }
 
@@ -111,8 +111,8 @@ body {
     -ms-flex: 1;
     flex: 1;
     padding: 48px;
-    background-color: #1976d2;
-    color: #fafafa;
+    background-color: #dc1431;
+    color: #ffffff;
     font-weight: 300;
 }
 
@@ -756,7 +756,7 @@ a:focus {
 .sidebar-menu,
 .main-sidebar .user-panel,
 .sidebar-menu>li.header {
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     overflow: hidden
 }
 
@@ -5701,18 +5701,4 @@ table.text-center th {
     .table-responsive>.table tr td {
         white-space: normal !important
     }
-}
-
-::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #6e6e6e;
-    outline: 1px solid #333;
-}
-
-::-webkit-scrollbar-trac {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
 }

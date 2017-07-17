@@ -1,5 +1,5 @@
 .skin-blue .main-header .navbar {
-    background-color: #1976d2
+    background-color: #dc1431;
 }
 
 .skin-blue .main-header .navbar .nav>li>a {
@@ -83,7 +83,7 @@
 
 .skin-blue .sidebar-menu>li>a {
     /*border-left: 3px solid transparent*/;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .skin-blue .sidebar-menu>li:hover>a,
