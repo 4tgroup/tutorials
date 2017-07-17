@@ -465,7 +465,7 @@ a:focus {
     left: 0;
     padding-top: 50px;
     padding-left: 14px;
-    padding-right: 14px;
+    /*padding-right: 14px;*/
     min-height: 100%;
     width: 280px;
     z-index: 810;

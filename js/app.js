@@ -302,8 +302,10 @@ function _init() {
                     //Add slimscroll
                     $(".sidebar").slimScroll({
                         height: ($(window).height() - $(".main-header").height()) + "px",
-                        color: "rgba(0,0,0,0.2)",
-                        size: "3px"
+                        color: "rgb(110,110,110)",
+                        size: "7px",
+                        borderRadius: "0px",
+                        opacity: .7,
                     });
                 }
             }

@@ -95,7 +95,7 @@ ul {
 }
 
 .content {
-    padding: 0 0 0 50px;
+    padding: 0 15px 0 50px;
 }
 
 .hierarchy {
@@ -116,6 +116,7 @@ pre {
 .sidebar {
     margin-top: 0;
     padding-top: 0!important;
+    padding-right: 14px;
 }
 
 .box .main-header {
@@ -360,14 +361,7 @@ li.L9 {
 .page-header a:hover {
     color: #1976d2 !important;
 }
-.col-sm-10 {
-    width: 80% !important;
-}
 
-.col-sm-2 {
-    width: 20% !important;
-}
-
-.content-wrapper .body ul li {
+.content-wrapper .body ul li, .content-wrapper .content-header ul li {
     font-size: 15px !important;
 }
