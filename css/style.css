@@ -72,7 +72,7 @@ ul {
 }
 
 .lead {
-    font-size: 18px;
+    font-size: 15px !important;
     font-weight: 400;
     max-width: 1200px;
 }
@@ -366,4 +366,8 @@ li.L9 {
 
 .col-sm-2 {
     width: 20% !important;
+}
+
+.content-wrapper .body ul li {
+    font-size: 15px !important;
 }
