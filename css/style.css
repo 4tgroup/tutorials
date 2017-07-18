@@ -74,7 +74,7 @@ ul {
 .lead {
     font-size: 15px !important;
     font-weight: 400;
-    max-width: 1200px;
+    max-width: 1144px;
 }
 
 .eg {
@@ -364,4 +364,12 @@ li.L9 {
 
 .content-wrapper .body ul li, .content-wrapper .content-header ul li {
     font-size: 15px !important;
+}
+
+.col-sm-9 {
+    width: 80%;
+}
+
+.col-sm-3 {
+    width: 20%;
 }
