@@ -110,7 +110,7 @@
                             <h2 class="page-header"><a href="#requirement">1. Requirement</a></h2>
                             <ul>
                                 <li><b>MySQL:</b> <a href="https://www.mysql.com" target="_blank">https://www.mysql.com</a></li>
-                                <li><b>Node.js:</b> <a href="https://nodejs.org" target="_blank">https://nodejs.org</a></li>
+                                <li><b>Node.js:</b> <a href="https://nodejs.org" target="_blank">https://nodejs.org</a> - Version 5.0.0 or later</li>
                             </ul>
                         </section>
                         <section id="install">
@@ -125,33 +125,30 @@
                             </p>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="configure">
-                            <h2 class="page-header"><a href="#configure">4. Configure</a></h2>
-                            <p class="lead">
-                                Open file <code>"server/config/dbConnection.js"</code> and config it:
-                            </p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">host: 'YOUR_HOST',
-user: 'YOUR_DATABASE_USER',
-password: 'YOUR_PASSWORD',
-database: 'DATABASE_NAME'</code></pre>
-                        </section>
-                        <!-- ============================================================= -->
                         <section id="run-server-api">
-                            <h2 class="page-header"><a href="#run-server-api">5. Run server API</a></h2>
+                            <h2 class="page-header"><a href="#run-server-api">4. Run server API</a></h2>
                             <p class="lead">Open cmd, cd to <code>"server"</code> folder and run:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm install</code></pre>
-                            <p class="lead">to install node_modules.
+                            <p class="lead">to install <code>node_modules.</code>
                                 <br>Then, run:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm start</code></pre>
                             <p class="lead">to start server.
                                 <br>Now, server start on port 5000.</p>
                         </section>
                         <!-- ============================================================= -->
+                        <section id="configure">
+                            <h2 class="page-header"><a href="#configure">5. Configure server</a></h2>
+                            <p class="lead">
+                                Open <code><u><a href="http://localhost:5000/index.html" target="_blank">http://localhost:5000/index.html</a></u></code>and setup it
+                            </p>
+                            <img class="img-responsive pad inside-image " src="images/how-to-run.png" alt="UI">
+                        </section>
+                        <!-- ============================================================= -->
                         <section id="run-client">
                             <h2 class="page-header"><a href="#run-client">6. Run client</a></h2>
-                            <p class="lead">Open cmd, cd to <code>"client "</code> folder and run:</p>
+                            <p class="lead">Open cmd, cd to <code>"client"</code> folder and run:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm install</code></pre>
-                            <p class="lead">to install node_modules.
+                            <p class="lead">to install <code>node_modules.</code>
                                 <br>Then, run:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ npm start</code></pre>
                             <p class="lead">to start client .
@@ -173,8 +170,8 @@ database: 'DATABASE_NAME'</code></pre>
                             <li><a href="#requirement">1. Requirement</a></li>
                             <li><a href="#install">2. Install</a></li>
                             <li><a href="#import-database">3. Import database</a></li>
-                            <li><a href="#configure">4. Configure</a></li>
-                            <li><a href="#run-server-api">5. Run server API</a></li>
+                            <li><a href="#run-server-api">4. Run server API</a></li>
+                            <li><a href="#configure">5. Configure server</a></li>
                             <li><a href="#run-client">6. Run client</a></li>
                         </ul>
                     </div>
