@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ListingExpress© | Translator Module</title>
+    <title>ListingExpress© | Usage</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="icon" type="image/x-icon" href="../../images/icon.png">
     <!-- Bootstrap 3.3.6 -->
@@ -87,6 +87,7 @@
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
                             <li class="active"><a href="usage.html">Usage</a></li>
+                            <li ><a href="results.html">Results</a> </li>
                         </ul>
                     </li>
                     <li><a href="#advice">1-m search</a></li>
@@ -111,19 +112,41 @@
                             <p class="lead">The server has two <code>API</code></p>
                             <ul>
                                 <li>
-                                    <p class="lead">Train <code>dictionary</code> return JSON response <code>{ "Error": boolean, "Message": message}</code>, example train success <code>{ "Error": false, "Message": "Create dictionary weight completed." }</code>.</p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">Path: '/trainDictionary'
-Method: POST
-Body: {
+                                    <p class="lead">Train <code>dictionary</code> return JSON response.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/trainDictionary'</i>
+• Method: <i>POST</i>
+• URL Params: <i>None</i>
+• Data Params: <i>{
     'dataset': 'PATH_TO_DATASET'
     'dataset_n': 'PATH_TO_NO_DIACRITICS_DATASET'
     'dictionary': 'PATH_TO_DICTIONARY'
-}</code></pre>
+}</i>
+• Header required: <i>None</i>
+• Success Response:
+    - <i>Code: 200
+    - Content:
+    {'Error': false, 'Message': 'Create dictionary weight completed.'}</i>
+• Error Response
+    - <i>Code: 404 NOT FOUND
+    All requirement fields not full fill or not exist data.
+    {'Error': true, 'Message": 'Path not exist.'}</i>
+</code></pre>
                                 </li>
                                 <li>
                                     <p class="lead">Get <code>dictionary</code> return dictionary file with <code>gzip</code> format.
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">Path: '/getDictionary'
-Method: GET</code></pre>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/getDictionary'</i>
+• Method: <i>GET</i>
+• URL Params: <i>None</i>
+• Data Params: <i>None</i>
+• Header required: <i>None</i>
+• <i>Success Response:
+    - Code: 200
+    - Content:
+    dictionary file with <code>gzip</code> format.</i>
+• <i>Error Response
+    - Code: 403 Forbidden
+    Not exist dictionary </i>   
+</code></pre>
                                 </li>
                             </ul>
                         </section>
@@ -162,8 +185,15 @@ vnSegmenter.segment(text, result => {
                         <section id="section-3">
                             <h2 class="page-header"><a href="#section-3">3. Using in CLI</a></h2>
                             <p class="lead">To see <code>options and help</code> run</p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -h</code></pre>
-                            <img class="img-responsive pad inside-image" src="images/help.png" alt="Help">
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -h
+Usage: vnSegmenter [options]
+Options:
+ -h, --help                  display this help and exit
+ -v, --version               display version and exit
+ -i, --input                 input path (required)
+ -o, --output                output path (optional)                                
+                            </code></pre>
+                            
                             <p class="lead">To segment <code>file</code> run</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -i INPUT_FILE_PATH</code></pre>
                             <p class="lead">To segment <code>folder</code> run</p>
