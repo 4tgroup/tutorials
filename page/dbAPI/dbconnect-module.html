@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ListingExpress© | How To Run</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <link rel="stylesheet" href="../../css/skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy" data-offset="50">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <a href="../../index.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>LE©</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">ListingExpress©</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <ul class="nav navbar-nav hidden-xs">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+                <div class="navbar-custom-menu hidden-xs hidden-sm">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="nav sidebar-menu">
+                    <li><a href="../../index.html">Introduction</a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>Multilingual controller</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../multilingual-controller/how-to-run.html">How To Run</a></li>
+                            <li><a href="../multilingual-controller/sign-in.html">Sign In</a></li>
+                            <li><a href="../multilingual-controller/developer-module.html">Developer Module</a></li>
+                            <li><a href="../multilingual-controller/translator-module.html">Translator Module</a></li>
+                            <li><a href="../multilingual-controller/compiler-module.html">Compiler Module</a></li>
+                            <li><a href="../multilingual-controller/admin-module.html">Admin Module</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>vnSegmenter</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../vn-segmenter/how-to-run.html">How To Run</a></li>
+                            <li><a href="../vn-segmenter/usage.html">Usage</a></li>
+                            <li ><a href="../vn-segmenter/results.html">Results</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="#advice">1-m search</a></li>
+                    <li><a href="#layout">Buyer-seller messaging</a></li>
+                     <li class="treeview active">
+                        <a href="#">
+                            <span>dbAPI</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
+                            <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
+                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
+                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
+                            <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="../license.html">License</a></li>
+                </ul>
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="content-header" id="how-to-run">
+                        <h1 class="h1-header">dbConnect Module</h1>
+                        <p class="lead">To <code>save</code> the database configuration, <code>provide</code> the token to authenticate and <code>create</code> database connection instance for <code>MySQL, SQLite, CouchDB, Neo4j, Redis</code>.</p>
+                    </div>
+                    <div class="content body">
+                        <section id="saveConfig">
+                            <h2 class="page-header"><a href="#requirement">1. Save configuration file</a></h2>
+                            <p class="lead">Usage:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbConnect = require('./dbAPI-server').dbConnect;
+            
+var dbinfo = input.metadata.dbinfo;
+dbConnect.saveConfig(dbinfo);</code></pre>
+                             <p class="lead">Input:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "PIN_CODE",
+                "protocol": "http/https/bolt", //bolt is Neo4j protocol
+                "host": "DB_HOST",
+                "user": "DB_USER",
+                "password": "DB_PASSWORD",
+                "database": "DB_NAME"
+                },
+            "connectionString":"" 
+        }</code></pre>
+                         <p class="lead">Output:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
+  "status":"error_code",
+  "message":"error_message/warning_message"
+}</code></pre>
+                        <code>Status</code> response:
+                        <ul>
+                            <li> <code>0 - success.</code> - the configuration file is saved.</li>
+                            <li> <code>400 - client error.</code></li>
+                            <li> <code>500 - server error.</code></li>
+                        </ul>
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="provideToken">
+                            <h2 class="page-header"><a href="#install">2. Provide token</a></h2>
+                            <p class="lead">Provide the <code>requestID</code> token for dbAPI authentication.</p>
+                            <p class="lead">Usage:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbConnect = require('./dbAPI-server').dbConnect;
+            
+var token = dbConnect.saveConfig(payload);</code></pre>
+                             <p class="lead">Input:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">payload = {
+            "user": "USER_NAME",
+            "role": "USER_ROLE",
+            "secret":"USER_SECRET_INFO",
+            "other":""
+        }</code></pre>
+                            <p class="lead">Output:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
+  "status":"error_code",
+  "message":"error_message/warning_message",
+  "token":""
+}</code></pre>
+                        <code>Status</code> response:
+                        <ul>
+                            <li> <code>0 - success.</code></li>
+                            <li> <code>400 - client error.</code></li>
+                            <li> <code>500 - server error.</code></li>
+                        </ul>
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="createConn">
+                            <h2 class="page-header"><a href="#run-server">3. Create connection instance</a></h2>
+                            <p class="lead">Create connection instance with <code>cFile</code> (configuration file):</p>
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">//Provide full file path
+//The configuration file is stored in ../dbAPI-server/config folder.
+"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "../dbAPI-server/config/dbinfo.neo4j.json",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"" 
+        }</code></pre>
+                              <p class="lead">Create connection instance with <code>config</code> (configuration info):</p>                             
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "U2FsdGVkX19r3sBl0/NzsH4sd4si5bGGKd++l+vbS6iqPjM2Y+GfKyqWSfWvztVIA+XRUIWuvBBmMw15kFGaE+d1e22ABgDukWmUIPQPQjuE+5T2z1m36CShvl3JIM/Y",
+                "protocol": "U2FsdGVkX1+cg2U/U877ZK++by2HZZuZadjfEWXwcyg=",
+                "host": "U2FsdGVkX19rCgQpuqXoULs+Oj73tdG9hNDAUUQbINE=",
+                "user": "U2FsdGVkX19eJAOLVUiUhSstn6d790AG4WC/dZfHUfI=",
+                "password": "U2FsdGVkX18sXEReRKPeXT8brNSCi/Uavt8H9jbzhww=",
+                "database": "U2FsdGVkX18yuab/mrCCmlwMv13+3u5fs++dNMpCCO0="
+                },
+            "connectionString":"" 
+        }</code></pre>
+                                <ul>
+                                    <li>The config info is encrypted by <code>saveConfig</code> funtion. See <code>1. Save configuration file</code> </li>
+                                    <li><code>pin</code> is used to decrypt other params and <code>c_passcode</code> is used to decrypt <code>pin</code>. See <code>4. Secret information configuraion</code> to config the <code>c_passcode</code>.</li>
+                                </ul>
+                              <p class="lead">Create connection instance with <code>connectionString</code> (connection string). This is secure connection with the certificate (create by openSSL) and config via Stunnel (See <code>5. Secure connection configuration</code>).</p>
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"PROTOCOL:bolt;HOST:127.0.0.1;PORT:7682;cFile:../dbAPI-server/config/dbinfo.neo4j.json" 
+        }</code></pre>
+                        <code>cFile</code> in connection string is used to get <code>DB_USER & DB_PASSWORD</code> from configuration file for client authenticates. <code>Connection string</code> supported:
+                        <ul>
+                            <li> <code>CouchDB : "PROTOCOL:http;HOST:127.0.0.1;PORT:59842;DATABASE:db_name;cFile:../dbAPI-server/config/dbinfo.couchdb.json"</code></li>
+                            <li> <code>Neo4j : "PROTOCOL:bolt;HOST:127.0.0.1;PORT:7682;cFile:../dbAPI-server/config/dbinfo.neo4j.json"</code></li>
+                            <li> <code>Redis : "HOST:127.0.0.1;PORT:7682;;DATABASE:0;cFile:../dbAPI-server/config/dbinfo.neo4j.json"</code></li>
+                            <li> <code>MySQL :</code>
+                                <ul>
+                                    <li>Native SSL: <code>"USER:sslclient;DATABASE:db_name;CERTFILE:../mysqlCerts/ca-cert.pem"</code> </li>
+                                    <li>Stunnel: <code>"USER:root;DATABASE:db_name;cFile:../dbAPI-server/config/dbinfo.mysql.json"</code></li>
+                                </ul>
+                            </li>
+                            <li> <code>SQLite</code>: Developing</li>
+                        </ul>
+                        </section>
+                         </section>
+                        <!-- ============================================================= -->
+                        <section id="secretConfig">
+                            <h2 class="page-header"><a href="#run-server">4. Secret information configuraion</a></h2>
+                             <p class="lead">The <code>secret.js</code> secret configuration file located at <code>../dbAPI-server/config/secret.js</code>. The secret information included:</p>
+                             <ul>
+                                 <li><code>c_passcode :</code> decrypt <code>pin</code> param of dbConnect input</li>
+                                 <li><code>secretKey :</code>secret key to create token via JWT</li>
+                                 <li><code>tokenAlorithm : alorithm to create token via JWT </code></li>
+                                 <li><code>expireTime : expire time of token created by JWT  </code></li>
+                             </ul>  
+                        </section>
+                         <!-- ============================================================= -->
+                        <section id="secureConfig">
+                            <h2 class="page-header"><a href="#run-server">5. Secure connection configuration</a></h2>
+                            <p class="lead">Config to authenticate with <code>Stunnel SSL</code> and <code>native SSL</code> for DBMS via <code>openSSL</code>.</p>
+                        </section>
+                       <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-sm-3 hidden-xs hidden-sm">
+                    <div class="sidebar custom-menu-scroll" id="scrollspy">
+                        <!-- sidebar menu: : style can be found in sidebar.less -->
+                        <ul class="nav sidebar-menu">
+                            <li class="h1 active custom-title"><a href="#how-to-run">SQLConverter Module</a></li>
+                            <li><a href="#saveConfig">1. Save configuration file</a></li>
+                            <li><a href="#provideToken">2. Provide token</a></li>
+                            <li><a href="#createConn">3. Create connection instance</a></li>
+                            <li><a href="#secretConfig">4. Secret information configuraion</a></li>
+                            <li><a href="#secureConfig">5. Secure connection configuration</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Main content -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right">
+                Copyright &copy; 2017. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 2.2.3 -->
+    <script src="../../js/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <script src="../../js/docs.js"></script>
+</body>
+
+</html>
