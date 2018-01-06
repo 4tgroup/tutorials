@@ -69,12 +69,12 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li><a href="how-to-run.html">How To Run</a></li>
-                            <li><a href="sign-in.html">Sign In</a></li>
-                            <li><a href="developer-module.html">Developer Module</a></li>
-                            <li><a href="translator-module.html">Translator Module</a></li>
-                            <li><a href="compiler-module.html">Compiler Module</a></li>
-                            <li><a href="admin-module.html">Admin Module</a></li>
+                            <li><a href="../multilingual-controller/how-to-run.html">How To Run</a></li>
+                            <li><a href="../multilingual-controller/sign-in.html">Sign In</a></li>
+                            <li><a href="../multilingual-controller/developer-module.html">Developer Module</a></li>
+                            <li><a href="../multilingual-controller/translator-module.html">Translator Module</a></li>
+                            <li><a href="../multilingual-controller/compiler-module.html">Compiler Module</a></li>
+                            <li><a href="../multilingual-controller/admin-module.html">Admin Module</a></li>
                         </ul>
                     </li>
                     <li class="treeview active">
@@ -128,8 +128,8 @@
                             <p class="lead">The server has two <code>API</code></p>
                             <ul>
                                 <li>
-                                    <p class="lead">Train <code>dictionary</code> return JSON response.</p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/trainDictionary'</i>
+                                    <p class="lead">Create <code>dictionary</code> return JSON response.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/createDictionary'</i>
 • Method: <i>POST</i>
 • URL Params: <i>None</i>
 • Data Params: <i>{
@@ -141,7 +141,7 @@
 • Success Response:
     - <i>Code: 200
     - Content:
-    {'Error': false, 'Message': 'Create dictionary weight completed.'}</i>
+    {'Error': false, 'Message': 'Created dictionary weight success in folder './data'.'}</i>
 • Error Response
     - <i>Code: 404 NOT FOUND
     All requirement fields not full fill or not exist data.

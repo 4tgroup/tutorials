@@ -84,22 +84,22 @@
                         </a>
                         <ul class="nav treeview-menu">
                             <li>
-                                <a href="how-to-run.html">How To Run</a>
+                                <a href="../multilingual-controller/how-to-run.html">How To Run</a>
                             </li>
                             <li>
-                                <a href="sign-in.html">Sign In</a>
+                                <a href="../multilingual-controller/sign-in.html">Sign In</a>
                             </li>
                             <li>
-                                <a href="developer-module.html">Developer Module</a>
+                                <a href="../multilingual-controller/developer-module.html">Developer Module</a>
                             </li>
                             <li>
-                                <a href="translator-module.html">Translator Module</a>
+                                <a href="../multilingual-controller/translator-module.html">Translator Module</a>
                             </li>
                             <li>
-                                <a href="compiler-module.html">Compiler Module</a>
+                                <a href="../multilingual-controller/compiler-module.html">Compiler Module</a>
                             </li>
                             <li>
-                                <a href="admin-module.html">Admin Module</a>
+                                <a href="../multilingual-controller/admin-module.html">Admin Module</a>
                             </li>
                         </ul>
                     </li>
@@ -136,13 +136,27 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li><a href="../dbAPI/how-to-run.html">How To Run</a></li>
-                            <li><a href="../dbAPI/usage.html">Usage</a></li>
-                            <li><a href="../dbAPI/sqlparser-module.html">SQLParser module</a></li>
-                            <li><a href="../dbAPI/sqlmapper-module.html">SQLMapper module</a></li>
-                            <li><a href="../dbAPI/sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="../dbAPI/dbconnect-module.html">dbConnect module</a></li>
-                            <li><a href="../dbAPI/rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li>
+                                <a href="../dbAPI/how-to-run.html">How To Run</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/usage.html">Usage</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/sqlparser-module.html">SQLParser module</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/sqlmapper-module.html">SQLMapper module</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/sqlconverter-module.html">SQLConverter module</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/dbconnect-module.html">dbConnect module</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/rediswrapper-module.html">RedisWrapper module</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -165,7 +179,46 @@
                     <div class="content body">
                         <section id="section-1">
                             <h2 class="page-header">
-                                <a href="#section-1">1. Evaluation execution time</a>
+                                <a href="#section-1">1. Dataset</a>
+                            </h2>
+                            <p class="lead">
+                                To experiments, we collect dataset from the
+                                <a href="https://vlsp.hpda.vn/demo/?&lang=en"
+                                    title="VLSP project" target="_blank">
+                                    <code>VLSP project</code>
+                                </a>.
+                                <br/> It is a collection of many articles from the "Politics – Society" section of the Vietnamese
+                                newspaper
+                                <a href="https://tuoitre.vn/" title="Tuoi Tre" target="_blank">
+                                    <code>"Tuổi trẻ" (The Youth)</code>.</a>
+                                <br/> All words that have been manually spell-checked and segmented by linguists from the
+                                <a href="http://www.vietlex.com/"
+                                    title="Vietnam Lexicography Center" target="_blank">
+                                    <code>Vietnam Lexicography Center</code>.</a>
+                                <br/>
+                                <br/> There are 6 datasets:
+                            </p>
+                            <ul>
+                                <li>The first dataset includes 7K sentences (about 2M syllables), each sentence is each line,
+                                    has not HTML tags.</li>
+                                <li>The second dataset include 27K sentences, same the first dataset but still has HTML tags.</li>
+                                <li>The third dataset include 70K sentences, same the second dataset.</li>
+                                <li>The fourth, fifth, sixth dataset include 7K, 27K, 70K same the first, second,third dataset
+                                    but without diacritics.</li>
+                            </ul>
+                            <p class="lead">The features of dataset:</p>
+                            <ul>
+                                <li>The syllables in a multisyllabic word connected by "_".</li>
+                                <li>In the data files are still the HTML tags, empty line, special characters.</li>
+                                <li>The input file has extension *.raw, output file has extension *.seg.</li>
+                                <li>Lowercase words</li>
+                            </ul>
+                            </p>
+                        </section>
+                        <br>
+                        <section id="section-2">
+                            <h2 class="page-header">
+                                <a href="#section-2">2. Execution time</a>
                             </h2>
                             <canvas id="timeChart" width="400" height="190"></canvas>
                             <br/>
@@ -179,30 +232,33 @@
                                 <code>JVnTextpro</code> has average execution time.
                             </p>
                         </section>
-                        <br>
-                        <section id="section-2">
-                            <h2 class="page-header">
-                                <a href="#section-2">2. Evaluation accuracy based on all words</a>
-                            </h2>
-                            <canvas id="accuracyChart" width="400" height="190"></canvas>
-                            <br/>
-                            <p class="lead">
-                                <code>UETsegmenter</code> obtains an up-to-date highest accuracy.
-                                Next is <code>vnTokenizer</code>. <code>JVnTextpro</code> has lowest accuracy.
-                                Our tool, <code>vnSegmenter.js</code> has average accuracy.
-                            </p>
-                        </section>
+
                         <br>
                         <section id="section-3">
                             <h2 class="page-header">
-                                <a href="#section-2">3. Evaluation F1</a>
+                                <a href="#section-3">3. Precision percentage</a>
+                            </h2>
+                            <canvas id="precisionChart" width="400" height="190"></canvas>
+                            <br/>
+                            <p class="lead">
+                                <code>UETsegmenter</code> obtains an up-to-date highest recision. Next is
+                                <code>vnTokenizer</code>.
+                                <code>JVnTextpro</code> has lowest precision. Our tool,
+                                <code>vnSegmenter.js</code> has average precision.
+                            </p>
+                        </section>
+                        <br>
+                        <section id="section-4">
+                            <h2 class="page-header">
+                                <a href="#section-4">4. F1-score</a>
                             </h2>
                             <canvas id="f1Chart" width="400" height="190"></canvas>
                             <br/>
                             <p class="lead">
-                                    <code>UETsegmenter</code> obtains an up-to-date highest F1.
-                                    Next is <code>vnTokenizer</code>. <code>JVnTextpro</code> has lowest F1.
-                                    Our tool, <code>vnSegmenter.js</code> has average F1.
+                                <code>UETsegmenter</code> obtains an up-to-date highest F1. Next is
+                                <code>vnTokenizer</code>.
+                                <code>JVnTextpro</code> has lowest F1. Our tool,
+                                <code>vnSegmenter.js</code> has average F1.
                             </p>
                         </section>
                         <br>
@@ -220,13 +276,16 @@
                                 <a href="#section-0">Results</a>
                             </li>
                             <li>
-                                <a href="#section-1">1. Execution time </a>
+                                <a href="#section-1">1. Dataset </a>
                             </li>
                             <li>
-                                <a href="#section-2">2. Accuary</a>
+                                <a href="#section-2">2. Execution time</a>
                             </li>
                             <li>
-                                <a href="#section-3">3. F1</a>
+                                <a href="#section-3">3. Precision percentage</a>
+                            </li>
+                            <li>
+                                <a href="#section-4">4. F1-score</a>
                             </li>
                         </ul>
                     </div>
@@ -261,7 +320,7 @@
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
                     label: 'vnSegmenter.js',
-                    data: [1.6, 2, 5.9, 6.5, 12.5, 14.4],
+                    data: [1.9, 1.9, 6.6, 6.1, 14.1, 13.5],
                     backgroundColor: '#FF6384',
                     borderColor: '#FF6384',
                     borderWidth: 1
@@ -300,7 +359,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Unit (s)'
+                            labelString: 'Time (s)'
                         }
                     },
                     ]
@@ -311,12 +370,6 @@
                     labels: {
                         fontColor: '#333'
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Chart 1. Result evaluation execution time.',
-                    position: 'bottom',
-                    fontColor: '#333'
                 },
                 layout: {
                     padding: {
@@ -356,41 +409,41 @@
             }
         });
 
-        // Accuary chart
+        // Precision chart
 
-        var accuracyChartEl = document.getElementById("accuracyChart");
-        var accuracyChart = new Chart(accuracyChartEl, {
+        var precisionChartEl = document.getElementById("precisionChart");
+        var precisionChart = new Chart(precisionChartEl, {
             type: 'bar',
             data: {
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
                     label: 'vnSegmenter.js',
-                    data: [95.5, 70.3, 93.9, 75.2, 93.7, 75.6],
+                    data: [96.7, 91.1, 95.8, 89.4, 95.7, 89.2],
                     backgroundColor: 'rgba(255, 99, 132, 1)',
                     borderColor: 'rgba(255,99,132,1)',
                     borderWidth: 1
                 }, {
                     label: 'UETsegmenter',
-                    data: [98.1, 70.9, 98.4, 75.3, 98.3, 75.7],
+                    data: [97.9, 55.5, 98.7, 66.7, 98.5, 67.7],
                     backgroundColor: 'rgba(54, 162, 235, 1)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }, {
                     label: 'vnTokenizer',
-                    data: [97.7, 70.2, 96.1, 74.9, 96, 75.2],
+                    data: [97.4, 50.9, 96.8, 63.2, 96.7, 64.3],
                     backgroundColor: 'rgba(255, 206, 86, 1)',
                     borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 1
                 }, {
                     label: 'DongDu',
-                    data: [93, 66.7, 94.6, 69.6, 94.6, 69.9],
+                    data: [92.5, 53.7, 95.4, 63.6, 95.4, 64.4],
                     backgroundColor: 'rgba(75, 192, 192, 1)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
                 },
                 {
                     label: 'JVnTextpro',
-                    data: [87.5, 69.4, 87, 69.8, 86.8, 70.1],
+                    data: [90.3, 58.6, 90, 64.5, 89.8, 65.4],
                     backgroundColor: 'rgba(153, 102, 255,1)',
                     borderColor: 'rgba(153, 102, 255, 1)',
                     borderWidth: 1
@@ -405,7 +458,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Unit (%)'
+                            labelString: 'Precision percentage (%)'
                         }
                     }]
                 },
@@ -415,12 +468,6 @@
                     labels: {
                         fontColor: '#333'
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Chart 2. Result evaluation accuracy based on all words.',
-                    position: 'bottom',
-                    fontColor: '#333'
                 },
                 layout: {
                     padding: {
@@ -468,7 +515,7 @@
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
                     label: 'vnSegmenter.js',
-                    data: [96.1, 59, 94.9, 68.9, 94.7, 69.7],
+                    data: [96, 89.1, 94.8, 87.4, 94.6, 87],
                     backgroundColor: 'rgba(255, 99, 132, 1)',
                     borderColor: 'rgba(255,99,132,1)',
                     borderWidth: 1
@@ -508,7 +555,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Unit (%)'
+                            labelString: 'F1-score (%)'
                         }
                     }]
                 },
@@ -521,12 +568,6 @@
                     labels: {
                         fontColor: '#333'
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Chart 3. Result evaluation F1.',
-                    position: 'bottom',
-                    fontColor: '#333'
                 },
                 layout: {
                     padding: {
