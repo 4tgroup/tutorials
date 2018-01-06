@@ -101,10 +101,11 @@
                         </a>
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="usage.html">Usage</a></li>
                             <li><a href="sqlparser-module.html">SQLParser module</a></li>
                             <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
                             <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
+                            <li class="active"><a href="dbconnect-module.html">dbConnect module</a></li>
                             <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
                         </ul>
                     </li>
@@ -221,7 +222,7 @@ var token = dbConnect.saveConfig(payload);</code></pre>
                                     <li>The config info is encrypted by <code>saveConfig</code> funtion. See <code>1. Save configuration file</code> </li>
                                     <li><code>pin</code> is used to decrypt other params and <code>c_passcode</code> is used to decrypt <code>pin</code>. See <code>4. Secret information configuraion</code> to config the <code>c_passcode</code>.</li>
                                 </ul>
-                              <p class="lead">Create connection instance with <code>connectionString</code> (connection string). This is secure connection with the certificate (create by openSSL) and config via Stunnel (See <code>5. Secure connection configuration</code>).</p>
+                              <p class="lead">Create connection instance with <code>connectionString</code> (connection string). This is secure connection with the certificate (created by openSSL) and config via Stunnel (See <code>5. Secure connection configuration</code>).</p>
                              <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
             "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
             "cFile": "",
@@ -264,7 +265,60 @@ var token = dbConnect.saveConfig(payload);</code></pre>
                          <!-- ============================================================= -->
                         <section id="secureConfig">
                             <h2 class="page-header"><a href="#run-server">5. Secure connection configuration</a></h2>
-                            <p class="lead">Config to authenticate with <code>Stunnel SSL</code> and <code>native SSL</code> for DBMS via <code>openSSL</code>.</p>
+                            <p class="lead">Config to authenticate with <code>Stunnel SSL</code> for DBMS via <code>openSSL</code>.</p>
+                            <p>Installation:</p>
+                            <ul>
+                                <li><code>stunnel:</code> <a href="https://www.stunnel.org/downloads.html">https://www.stunnel.org/downloads.html</a></li>
+                                <li><code>openSSL:</code> <a href="https://www.openssl.org/source">https://www.openssl.org/source</a></li>
+                                <li><code>Cygwin</code> <a href="https://www.stunnel.org/downloads.html">https://www.stunnel.org/downloads.html</a> (for Windows):</li>
+                                <li><code>DBMS:</code> MySQL, Neo4j, Redis, CouchDB. (on Database Server)</li>
+                            </ul>
+                            <p>Generate <code>self-signed certificate</code>via <code>openSSL</code>:</p>
+                            <ul>
+                                <li>Generate a key:
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">openssl genrsa -out /etc/stunnel/key.pem 4096</code></pre>
+                                </li>
+                                <li>Generate the <code>certificate</code> with the expire days define by <code>-days </code>:
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">openssl req -new -x509 -key /etc/stunnel/key.pem -out /etc/stunnel/cert.pem -days 1826</code></pre>
+                                </li>
+                                 <li>Combine the two files: (Use Cygwin for Windows)
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">cat /etc/stunnel/key.pem /etc/stunnel/cert.pem > /etc/stunnel/private.pem
+chmod 640 /etc/stunnel/key.pem /etc/stunnel/cert.pem /etc/stunnel/private.pem</code></pre>
+                                    We will combine both the key and certificate into a single file for stunnel to use. We will also change the file permissions to restrict who has access to read these key files. Finally, we got the <code>private.pem</code> certificate.
+                                </li>
+                            </ul>
+                            <p>Config <code>stunnel</code>. Example with Redis (the same configuration for other DBMSs):</p>
+                             <ul>
+                                <li>Config on Database Server (server):
+                                    <ul>
+                                        <li>Find or create the <code>stunnel.conf</code> configuration file.</li>
+                                        <li>Add to <code>stunnel.conf</code> file:</li>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">[redis-server]
+pid = /var/run/stunnel.pid //UNIX
+accept = 192.168.0.1:6379
+connect = 127.0.0.1:6379
+cert = private.pem</code></pre>
+                                     <li>Restart the <code>stunnel</code></li>
+                                    </ul>
+                                     <p>By default, Redis listen to the <code>localhost</code>, on port <code>6379</code>. Our configuration has stunnel <code>accept</code> the connections on the external IP <code>(192.168.0.1:6379)</code> and forward the connections to the Redis instance listening on <code>127.0.0.1:6379</code>.</p>
+                                </li>
+                                <li>Config on Web Server (client)::
+                                   <ul>
+                                        <li>Copy the <code>private.pem</code> from Database Server to Web Server.</li>
+                                        <li>Find or create the <code>stunnel.conf</code> configuration file.</li>
+                                        <li>Add to <code>stunnel.conf</code> file:</li>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">[redis-cli]
+client = yes
+pid = /var/run/stunnel.pid //UNIX
+accept = 127.0.0.1:6379
+connect = 192.168.0.1:6379
+cert = private.pem
+</code></pre>
+                                    <li>Restart the <code>stunnel</code></li>
+                                    </ul>
+                                    <p>On a client instance the <code>accept</code> and <code>connect</code> settings are reversed from the server configuration. This tells stunnel to listen locally on port 6379 <code>(127.0.0.1:6379)</code> and forward the connections to the server host IP with port 6379 <code>(192.168.0.1:6379)</code>.</p>
+                                </li>
+                            </ul>
                         </section>
                        <br>
                         <br>

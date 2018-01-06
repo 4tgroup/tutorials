@@ -101,10 +101,10 @@
                         </a>
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
-                            <li><a href="usage.html">Usage</a></li>
+                            <li class="active"><a href="usage.html">Usage</a></li>
                             <li><a href="sqlparser-module.html">SQLParser module</a></li>
                             <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li class="active"><a href="sqlconverter-module.html">SQLConverter module</a></li>
+                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
                             <li><a href="dbconnect-module.html">dbConnect module</a></li>
                             <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
                         </ul>
@@ -120,22 +120,39 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="content-header" id="how-to-run">
-                        <h1 class="h1-header">SQLConverter Module</h1>
-                        <p class="lead">To <code>convert & execute</code> the SQL query in other DBMS. Supported: <code>MySQL, SQLite, CouchDB, Neo4j, Redis</code>.</p>
+                        <h1 class="h1-header">Usage</h1>
                     </div>
                     <div class="content body">
-                        <section id="usage">
-                            <h2 class="page-header"><a href="#requirement">1. Usage</a></h2>
-                            <p class="lead">Using in <code>Node.js</code></p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var SQLConverter = require('./dbAPI-server').SQLConverter;
+                        <section id="dbapi-client">
+                            <h2 class="page-header"><a href="#requirement">1. dbAPI-client</a></h2>
+                            <p class="lead"><code>dbAPI-client</code> is a RESTFul API, support to <code>select</code> data from database. The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/dbAPI-client/select'</i>
+• Method: <i>POST</i>
+• URL Params: <i>None</i>
+• Data Params: <i>{
+    //input: Object JSON
+}</i>
+• Header required: <i>None</i>
+• Success Response:{
+    //output: Object JSON
+}</i>
+</code></pre>
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="dbapi-server">
+                            <h2 class="page-header"><a href="#install">2. dbAPI-server</a></h2>
+                            <p class="lead"><code>dbAPI-server</code> is a JavaScript API. Support: <code>create, select, insert, update, delete, alter, index</code> SQL action.The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
+                            <code>Node.js</code> usage:
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
                          
-SQLConverter(input, function (output) {
+dbAPI(input, function (output) {
     //Handle output
 });</code></pre>
                         </section>
-                        <section id="input">
-                            <h2 class="page-header"><a href="#install">2. Input</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
+                        <!-- ============================================================= -->
+                        <section id="dbapi-params">
+                            <h2 class="page-header"><a href="#run-server">3. dbAPI parameters</a></h2>
+                             <p class="lead"><code>dbAPI input</code> object JSON:</code></p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
     "requestID": "REQUEST_ID_TOKEN",
     "metadata": {
@@ -163,13 +180,8 @@ SQLConverter(input, function (output) {
         "execution": "async/sync" //Default is async (currently implement for async only)
     }
 }</code></pre>
-                        <p class="lead">The <code>requestID, metadata</code> params are used in <code>dbConnect module</code> to connect to DBMS. See <a href="dbconnect-module.html">dbConnect module</a> for detail.</p>
-                        </section>
-                        <!-- ============================================================= -->
-                        <section id="output">
-                            <h2 class="page-header"><a href="#run-server">3. Output</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
-                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">output = {
+                            <p class="lead"><code>dbAPI ouput</code> object JSON:</code></p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">output = {
       "requestID": "REQUEST_ID_TOKEN",
       "metadata": {
         "tbinfo": []
@@ -198,7 +210,7 @@ SQLConverter(input, function (output) {
                             <li> <code>status of DBMS execution error response - DBMS execution error.</code></li>
                         </ul>
                         </section>
-                       <br>
+                        <br>
                         <br>
                         <br>
                         <br>
@@ -209,10 +221,10 @@ SQLConverter(input, function (output) {
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">SQLConverter Module</a></li>
-                            <li><a href="#usage">1. Usage</a></li>
-                            <li><a href="#input">2. Input</a></li>
-                            <li><a href="#output">3. Output</a></li>
+                            <li class="h1 active custom-title"><a href="#how-to-run">Usage</a></li>
+                            <li><a href="#dbapi-client">1. dbAPI-client</a></li>
+                            <li><a href="#dbapi-server">2. dbAPI-server</a></li>
+                            <li><a href="#dbapi-params">3. dbAPI parameters</a></li>
                         </ul>
                     </div>
                 </div>
