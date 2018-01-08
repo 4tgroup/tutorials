@@ -179,16 +179,11 @@
                     <div class="content body">
                         <section id="section-1">
                             <h2 class="page-header">
-                                <a href="#section-1">1. Dataset</a>
+                                <a href="#section-1">1. Datasets</a>
                             </h2>
                             <p class="lead">
-                                To experiments, we collect dataset from the
-                                <a href="https://vlsp.hpda.vn/demo/?&lang=en"
-                                    title="VLSP project" target="_blank">
-                                    <code>VLSP project</code>
-                                </a>.
-                                <br/> It is a collection of many articles from the "Politics – Society" section of the Vietnamese
-                                newspaper
+                                For evaluation, we collect datasets from the <a href="https://vlsp.hpda.vn/demo/?&lang=en" title="VLSP project" target="_blank"><code>VLSP project</code></a>.
+                                <br/> It is a collection of many articles from the "Politics – Society" section of Vietnamese newspaper
                                 <a href="https://tuoitre.vn/" title="Tuoi Tre" target="_blank">
                                     <code>"Tuổi trẻ" (The Youth)</code>.</a>
                                 <br/> All words that have been manually spell-checked and segmented by linguists from the
@@ -196,22 +191,22 @@
                                     title="Vietnam Lexicography Center" target="_blank">
                                     <code>Vietnam Lexicography Center</code>.</a>
                                 <br/>
-                                <br/> There are 6 datasets:
+                                <br/> There are 3 datasets and a replicate of 3 without diacritics:
                             </p>
                             <ul>
-                                <li>The first dataset includes 7K sentences (about 2M syllables), each sentence is each line,
-                                    has not HTML tags.</li>
-                                <li>The second dataset include 27K sentences, same the first dataset but still has HTML tags.</li>
-                                <li>The third dataset include 70K sentences, same the second dataset.</li>
-                                <li>The fourth, fifth, sixth dataset include 7K, 27K, 70K same the first, second,third dataset
-                                    but without diacritics.</li>
+                                <li>The first dataset includes 7K sentences (about 2M syllables), each sentence is on one line,
+                                    has no HTML tags.</li>
+                                <li>The second dataset include 27K sentences, similar to the first dataset but still has HTML tags.</li>
+                                <li>The third dataset include 70K sentences, the same as the second dataset.</li>
+                                <li>The fourth, fifth, sixth dataset include 7K, 27K, 70K from the first, second, and third dataset
+                                    but diacritics are eliminated.</li>
                             </ul>
-                            <p class="lead">The features of dataset:</p>
+                            <p class="lead">Features of datasets:</p>
                             <ul>
-                                <li>The syllables in a multisyllabic word connected by "_".</li>
-                                <li>In the data files are still the HTML tags, empty line, special characters.</li>
-                                <li>The input file has extension *.raw, output file has extension *.seg.</li>
-                                <li>Lowercase words</li>
+                                <li>The syllables in multisyllabic words are connected by "_".</li>
+                                <li>Data files still contain the HTML tags, empty line, special characters.</li>
+                                <li>Input files have extension *.raw; output files have extension *.seg.</li>
+                                <li>All words are in lowercase.</li>
                             </ul>
                             </p>
                         </section>
@@ -224,9 +219,8 @@
                             <br/>
                             <p class="lead">
                                 Our tool,
-                                <code>vnSegmenter.js</code> has the fastest execution time in all dataset (~100 times with
-                                <code>vnTokenizer</code>).
-                                <code>vnTokenizer</code>has the longest execution time in dataset 7K and 70K.
+                                <code>vnSegmenter.js</code> gains the fastest execution time across all datasets (~5x the other fastest tool and 10x-100x the slowest one).
+                                <code>vnTokenizer</code>seems to have the longest execution time in all datasets.
                                 <code>DongDu</code>,
                                 <code>UETsegmenter</code>,
                                 <code>JVnTextpro</code> has average execution time.
@@ -240,12 +234,6 @@
                             </h2>
                             <canvas id="precisionChart" width="400" height="190"></canvas>
                             <br/>
-                            <p class="lead">
-                                <code>UETsegmenter</code> obtains an up-to-date highest recision. Next is
-                                <code>vnTokenizer</code>.
-                                <code>JVnTextpro</code> has lowest precision. Our tool,
-                                <code>vnSegmenter.js</code> has average precision.
-                            </p>
                         </section>
                         <br>
                         <section id="section-4">
@@ -254,12 +242,6 @@
                             </h2>
                             <canvas id="f1Chart" width="400" height="190"></canvas>
                             <br/>
-                            <p class="lead">
-                                <code>UETsegmenter</code> obtains an up-to-date highest F1. Next is
-                                <code>vnTokenizer</code>.
-                                <code>JVnTextpro</code> has lowest F1. Our tool,
-                                <code>vnSegmenter.js</code> has average F1.
-                            </p>
                         </section>
                         <br>
                         <br>
