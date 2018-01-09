@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ListingExpress© | How To Run</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/x-icon" href="../../images/icon.png">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../css/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <link rel="stylesheet" href="../../css/skins.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="skin-blue fixed" data-spy="scroll" data-target="#scrollspy" data-offset="50">
+    <div class="wrapper">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <a href="../../index.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>LE©</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">ListingExpress©</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <ul class="nav navbar-nav hidden-xs">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+                <div class="navbar-custom-menu hidden-xs hidden-sm">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <div class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="nav sidebar-menu">
+                    <li><a href="../../index.html">Introduction</a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>Multilingual controller</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../multilingual-controller/how-to-run.html">How To Run</a></li>
+                            <li><a href="../multilingual-controller/sign-in.html">Sign In</a></li>
+                            <li><a href="../multilingual-controller/developer-module.html">Developer Module</a></li>
+                            <li><a href="../multilingual-controller/translator-module.html">Translator Module</a></li>
+                            <li><a href="../multilingual-controller/compiler-module.html">Compiler Module</a></li>
+                            <li><a href="../multilingual-controller/admin-module.html">Admin Module</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>vnSegmenter</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../vn-segmenter/how-to-run.html">How To Run</a></li>
+                            <li><a href="../vn-segmenter/usage.html">Usage</a></li>
+                            <li ><a href="../vn-segmenter/results.html">Results</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="#advice">1-m search</a></li>
+                    <li><a href="#layout">Buyer-seller messaging</a></li>
+                     <li class="treeview active">
+                        <a href="#">
+                            <span>dbAPI</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="usage.html">Usage</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li class="active"><a href="rediseasy-module.html">RedisEasy module</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="../license.html">License</a></li>
+                </ul>
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="content-header" id="rediseasy-module">
+                        <h1 class="h1-header">RedisEasy Module</h1>
+                        <p class="lead">To wrap the <code>set/add, get, del</code> Redis command to one input object parameter. This module executes the command via ioredis</p>
+                    </div>
+                    <div class="content body">
+                        <section id="usage">
+                            <h2 class="page-header"><a href="#usage">1. Usage</a></h2>
+                            <p class="lead">Using in <code>Node.js</code></p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var RedisWrapper = require('./dbAPI-server').RedisWrapper;
+                         
+RedisWrapper.set(input, function (output) {   //Can replace .set by .get or .del
+    //Handle output
+});</code></pre>
+                        <p class="lead"><code>add</code> command will execute if the variable of <code>set</code> command do not exist in database.</p>
+                        </section>
+                        <section id="input">
+                            <h2 class="page-header"><a href="#input">2. Input</a></h2>
+                            <p class="lead">The JSON object with the format:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "name of variable" or [list of variable names],
+        "value": "Strings datatype value" or [] or {},
+        "index": [],
+        "other": []
+        }</code></pre>
+                        <p class="lead"><code>Parameters</code> meaning:</p>
+                        <ul>
+                            <li><code>variable (key): </code>contain single string variable or array variable.</li>
+                            <li><code>value: </code>contain single string value or array values or object {hkey:hvalue} (Hashes datatype).</li>
+                            <li><code>index: </code>contain the index of command
+                                <ul>
+                                    <code>set</code> command:
+                                    <li><code>[0]: </code>insert values to the head of the list.</li>
+                                    <li><code>[-1]: </code>insert values to the tail of the list.</li>
+                                    <li><code>["pivot"]: </code>insert value to BEFORE|AFTER (default AFTER) <code>pivot</code> value.</li>
+                                    <li><code>[10, 20, 30]: </code>define score for corresponding values in <code>value</code>.</li>
+                                    <code>get</code> command:
+                                    <li><code>[index]: </code>get a value in list with an index position.</li>
+                                    <li><code>[startidx, stopidx]: </code>get values in list/sorted set with an index range.</li>
+                                    <li><code>["hkey1","hkey2","hkey3"]: </code>get a values in hash with index keys.</li>
+                                    <code>del</code> command:
+                                    <li><code>[0]: </code>remove the 1st element.</li>
+                                    <li><code>[-1]: </code>remove the last element.</li>
+                                    <li><code>[index]: </code>
+                                        <ul>
+                                            <li><code>index > 0</code> - Remove elements equal to value moving from head to tail.</li>
+                                            <li><code>index < 0</code> - Remove elements equal to value moving from tail to head.</li>
+                                            <li><code>index = 0</code> - Remove all elements equal to value.</li>
+                                        </ul>
+                                    </li>
+
+                                    <li><code>[10, 20]: </code>removes all elements in the sorted set stored at key with rank between startidx and stopidx</li>
+                                    <li><code>["hkey1","hkey2","hkey3"]: </code>removes the specified hkeys from the hash stored at variable (key). </li>
+                                </ul>
+                            </li>
+                            <li><code>other: </code>contain the other information like command option.
+                                <ul>
+                                    <li><code>["EX", seconds]:</code> expire time in seconds</li>
+                                    <li><code>["PX", milliseconds]:</code> expire time in milliseconds</li>
+                                    <li><code>["BEFORE|AFTER"]:</code> insert value BEFORE|AFTER a pivot to list.</li>
+                                    <li><code>["WITHSCORES"]:</code> get score of corresponding members in sorted set.</li>
+                                    <li>...</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        </section>
+                        <!-- ============================================================= -->
+                        <section id="example">
+                            <h2 class="page-header"><a href="#example">3. Example parameters</a></h2>
+                        <p class="lead"><code>Set/Add</code> command:</p>
+                        <ul>
+                            <li><p><code>Strings</code> datatype</p>
+                                <ul>
+                                    <li> <p>Set a variable <code>"String":"Hello dbAPI"</code> and will expire in 10s.</p>
+ <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "String",
+        "value": "Hello dbAPI",
+        "index": [],
+        "other": ["EX", 10]
+    }    
+//If variable "String" exists ("String":"Hello "), this command will be Add command and append "Hello dbAPI" to "String" ("String":"Hello Hello dbAPI")</code></pre>
+                                    </li>
+                                    <li><p>Set multiple variable and values <code>"name1":"val1", "name2":"val2", "name3":"val3"</code>and will expire in 100 milliseconds.</p>
+                                     <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": ["name1", "name2", "name3"],
+        "value": ["val1", "val2", "val3"],
+        "index": [],
+        "other": ["PX", 100]
+    }</code></pre>
+                                    </li>
+                                </ul>
+                           </li>
+                            <li> <code>Lists</code> datatype
+                                <ul>
+                                    <li><p>Insert an array values to the head of a variable, also set expire time if you want.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "list_name",
+        "value": ["val1", "val2"],
+        "index": [0],
+        "other": ["EX", 10]
+    }</code></pre>
+                                    </li>
+                                    <li><p>Insert a value before or after a pivot of an existing variable. You also define expire time at the second position in array</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "exist_list_name",
+        "value": ["value"], //Array has only one value
+        "index": ["pivot"],
+        "other": ["BEFORE", ["EX", 10]] //LINSERT option (default AFTER)
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                           <li> <code>Sets</code> datatype
+                                <ul>
+                                    <li><p>Insert an array unique values to a variable.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "set_name",
+        "value": ["val1", "val2"],
+        "index": [],
+        "other": []
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <code>Sorted sets</code> datatype
+                                <ul>
+                                    <li><p>Insert an array unique values with score to a variable.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "sorted_set_name",
+        "value": ["val1", "val2", "val3"],
+        "index": [10, 20, 30],  //Score of the values
+        "other": []
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <code>Hashes</code> datatype
+                                <ul>
+                                    <li><p>Insert an hash object {"hkey1":"hval1", ...} to a variable.</p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "hash_name",
+        "value": {"hkey1":"val1", "hkey2":"val2", "hkey3":"val3"},
+        "index": [],
+        "other": []
+    }
+</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                           </ul>
+                                    <!-- ===== END SET/ADD ===== -->
+                        <p class="lead"><code>Get</code> command:</p> 
+                           <ul>
+                            <li> <code>Strings</code> datatype
+                                <ul>
+                                   <li><p>Get a value of a variable.</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+            "variable": "String", //for get multiple use array ["name1", "name2", "name3"]
+            "value": [],
+            "index": [],
+            "other": [] 
+        }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <code>Lists</code> datatype
+                                <ul>
+                                   <li><p>Get array values of a variable in a range from position 0 to 10.</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "list_name",
+        "value": [],
+        "index": [0, 10],
+        "other": [] 
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                            <li> <code>Sets</code> datatype
+                                <ul>
+                                   <li><p>Get all array unique values of a variable</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "sets_name",
+        "value": [],
+        "index": [],
+        "other": [] 
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                              <li> <code>Sets</code> datatype
+                                <ul>
+                                   <li><p>Get values from hash object with corresponding hash keys.</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "hash_name",
+        "value": [],
+        "index": ["hkey1","hkey2","hkey3"],
+        "other": [] 
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                           </ul>
+                            <!-- ========= END GET ========-->
+                           <p class="lead"><code>Del</code> command:</p> 
+                           <ul>
+                            <li> <code>Strings</code> datatype
+                                <ul>
+                                   <li><p>To delete string varaiable, we set this variable expire in 0 ms (Redis does not support command to remove Strings varaiable)</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "name",
+        "value": [],
+        "index": [],
+        "other": ["PX", 0] //Expire in 0 millisecond
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> <code>Lists</code> datatype
+                                <ul>
+                                   <li><p>Remove 2 values with value is <code>"ABC"</code> moving from tail to head.</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "list_name",
+        "value": ["ABC"], //if value exist, del command will depend on this value.
+        "index": [-2], //see more [index] in option
+        "other": []
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                            <li> <code>Sets</code> datatype
+                                <ul>
+                                   <li><p>Remove <code>"val1"</code> and <code>"val2"</code> in the unique <code>"set_name"</code> array</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "set_name",
+        "value": ["val1", "val2"],
+        "index": [],
+        "other": []
+    }
+</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                              <li> <code>Hashes</code> datatype
+                                <ul>
+                                   <li><p>Remove specified hash keys from hash object.</p>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
+        "variable": "sorted_set_name",
+        "value": [],
+        "index": ["hkey1","hkey2","hkey3"],
+        "other": []
+    }</code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--  -->
+                           </ul>
+                            <!-- ========== END DEL =======-->
+                        </section>
+                       <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-sm-3 hidden-xs hidden-sm">
+                    <div class="sidebar custom-menu-scroll" id="scrollspy">
+                        <!-- sidebar menu: : style can be found in sidebar.less -->
+                        <ul class="nav sidebar-menu">
+                            <li class="h1 active custom-title"><a href="#how-to-run">RedisEasy Module</a></li>
+                            <li><a href="#usage">1. Usage</a></li>
+                            <li><a href="#input">2. Input</a></li>
+                            <li><a href="#example">3. Example</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Main content -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right">
+                Copyright &copy; 2017. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 2.2.3 -->
+    <script src="../../js/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/jquery.slimscroll.min.js"></script>
+    <script src="../../js/docs.js"></script>
+</body>
+
+</html>

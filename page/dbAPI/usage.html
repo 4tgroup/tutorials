@@ -102,11 +102,14 @@
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
                             <li class="active"><a href="usage.html">Usage</a></li>
-                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
-                            <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
-                            <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -124,7 +127,7 @@
                     </div>
                     <div class="content body">
                         <section id="dbapi-client">
-                            <h2 class="page-header"><a href="#requirement">1. dbAPI-client</a></h2>
+                            <h2 class="page-header"><a href="#dbapi-client">1. dbAPI-client</a></h2>
                             <p class="lead"><code>dbAPI-client</code> is a RESTFul API, support to <code>select</code> data from database. The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
                                     <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/dbAPI-client/select'</i>
 • Method: <i>POST</i>
@@ -140,7 +143,7 @@
                         </section>
                         <!-- ============================================================= -->
                         <section id="dbapi-server">
-                            <h2 class="page-header"><a href="#install">2. dbAPI-server</a></h2>
+                            <h2 class="page-header"><a href="#dbapi-server">2. dbAPI-server</a></h2>
                             <p class="lead"><code>dbAPI-server</code> is a JavaScript API. Support: <code>create, select, insert, update, delete, alter, index</code> SQL action.The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
                             <code>Node.js</code> usage:
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
@@ -151,7 +154,7 @@ dbAPI(input, function (output) {
                         </section>
                         <!-- ============================================================= -->
                         <section id="dbapi-params">
-                            <h2 class="page-header"><a href="#run-server">3. dbAPI parameters</a></h2>
+                            <h2 class="page-header"><a href="#dbapi-params">3. dbAPI parameters</a></h2>
                              <p class="lead"><code>dbAPI input</code> object JSON:</code></p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
     "requestID": "REQUEST_ID_TOKEN",
@@ -210,6 +213,209 @@ dbAPI(input, function (output) {
                             <li> <code>status of DBMS execution error response - DBMS execution error.</code></li>
                         </ul>
                         </section>
+                        <!-- ============================================================= -->
+                         <section id="dbconnect">
+                            <h2 class="page-header"><a href="#dbconnect">4. dbConnect</a></h2>
+                           <p class="lead">To <code>save</code> the database configuration, <code>provide</code> the token to authenticate and <code>create</code> database connection instance for <code>MySQL, SQLite, CouchDB, Neo4j, Redis</code>.</p>
+                        <ul>
+                            <li><p class="lead"><b>Save configuration file:</b></p>
+                            <p >Usage:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbConnect = require('./dbAPI-server').dbConnect;
+            
+var dbinfo = input.metadata.dbinfo;
+dbConnect.saveConfig(dbinfo);</code></pre>
+                             <p>Input:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "PIN_CODE",
+                "protocol": "http/https/bolt", //bolt is Neo4j protocol
+                "host": "DB_HOST",
+                "user": "DB_USER",
+                "password": "DB_PASSWORD",
+                "database": "DB_NAME"
+                },
+            "connectionString":"" 
+        }</code></pre>
+                             <p>Output:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
+  "status":"error_code",
+  "message":"error_message/warning_message"
+}</code></pre>
+                        <code>Status</code> response:
+
+                                <ul>
+                                    <li> <code>0 - success.</code> - the configuration file is saved.</li>
+                                    <li> <code>400 - client error.</code></li>
+                                    <li> <code>500 - server error.</code></li>
+                                </ul>
+                            </li>
+                            <br>
+                            <!-- === -->
+                            <li><p class="lead"><b>Provide token:</b></p>
+                                <p >Provide the <code>requestID</code> token for dbAPI authentication.</p>
+                            <p>Usage:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbConnect = require('./dbAPI-server').dbConnect;
+            
+var token = dbConnect.saveConfig(payload);</code></pre>
+                             <p>Input:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">payload = {
+            "user": "USER_NAME",
+            "role": "USER_ROLE",
+            "secret":"USER_SECRET_INFO",
+            "other":""
+        }</code></pre>
+                            <p>Output:</p>
+                          <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
+  "status":"error_code",
+  "message":"error_message/warning_message",
+  "token":""
+}</code></pre>
+                        <code>Status</code> response:
+                                <ul>
+                                    <li> <code>0 - success.</code></li>
+                                    <li> <code>400 - client error.</code></li>
+                                    <li> <code>500 - server error.</code></li>
+                                </ul>
+                            </li>
+                            <br>
+                             <!-- === -->
+                            <li>
+                                <p class="lead"><b>Create connection instance:</b></p>
+                                <p >Create connection instance with <code>cFile</code> (configuration file):</p>
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">//Provide full file path
+//The configuration file is stored in ../dbAPI-server/config folder.
+"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "../dbAPI-server/config/dbinfo.neo4j.json",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"" 
+        }</code></pre>
+                              <p>Create connection instance with <code>config</code> (configuration info):</p>                             
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "U2FsdGVkX19r3sBl0/NzsH4sd4si5bGGKd++l+vbS6iqPjM2Y+GfKyqWSfWvztVIA+XRUIWuvBBmMw15kFGaE+d1e22ABgDukWmUIPQPQjuE+5T2z1m36CShvl3JIM/Y",
+                "protocol": "U2FsdGVkX1+cg2U/U877ZK++by2HZZuZadjfEWXwcyg=",
+                "host": "U2FsdGVkX19rCgQpuqXoULs+Oj73tdG9hNDAUUQbINE=",
+                "user": "U2FsdGVkX19eJAOLVUiUhSstn6d790AG4WC/dZfHUfI=",
+                "password": "U2FsdGVkX18sXEReRKPeXT8brNSCi/Uavt8H9jbzhww=",
+                "database": "U2FsdGVkX18yuab/mrCCmlwMv13+3u5fs++dNMpCCO0="
+                },
+            "connectionString":"" 
+        }</code></pre>
+                                <ul>
+                                    <li>The config info is encrypted by <code>saveConfig</code> funtion. See <code>Save configuration file</code> </li>
+                                    <li><code>pin</code> is used to decrypt other params and <code>c_passcode</code> is used to decrypt <code>pin</code>. See <code>Secret information configuraion</code> to config the <code>c_passcode</code>.</li>
+                                </ul>
+                              <p >Create connection instance with <code>connectionString</code> (connection string). This is secure connection with the certificate (created by openSSL) and config via Stunnel (See <code>Secure connection configuration</code>).</p>
+                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">"dbinfo": {
+            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
+            "cFile": "",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"PROTOCOL:bolt;HOST:127.0.0.1;PORT:7682;cFile:../dbAPI-server/config/dbinfo.neo4j.json" 
+        }</code></pre>
+                        <code>cFile</code> in connection string is used to get <code>DB_USER & DB_PASSWORD</code> from configuration file for client authenticates. <code>Connection string</code> supported:
+                                <ul>
+                                    <li> <code>CouchDB : "PROTOCOL:http;HOST:127.0.0.1;PORT:59842;DATABASE:db_name;cFile:../dbAPI-server/config/dbinfo.couchdb.json"</code></li>
+                                    <li> <code>Neo4j : "PROTOCOL:bolt;HOST:127.0.0.1;PORT:7682;cFile:../dbAPI-server/config/dbinfo.neo4j.json"</code></li>
+                                    <li> <code>Redis : "HOST:127.0.0.1;PORT:7682;;DATABASE:0;cFile:../dbAPI-server/config/dbinfo.neo4j.json"</code></li>
+                                    <li> <code>MySQL :</code>
+                                        <ul>
+                                            <li>Native SSL: <code>"USER:sslclient;DATABASE:db_name;CERTFILE:../mysqlCerts/ca-cert.pem"</code> </li>
+                                            <li>Stunnel: <code>"USER:root;DATABASE:db_name;cFile:../dbAPI-server/config/dbinfo.mysql.json"</code></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <br>
+                             <!-- === -->
+                            <li>
+                                <p class="lead"><b>Secret information configuraion</b></p>
+                                <p>The <code>secret.js</code> secret configuration file located at <code>../dbAPI-server/config/secret.js</code>. The secret information included:</p>
+                                 <ul>
+                                     <li><code>c_passcode :</code> decrypt <code>pin</code> param of dbConnect input</li>
+                                     <li><code>secretKey :</code>secret key to create token via JWT</li>
+                                     <li><code>tokenAlorithm</code> : alorithm to create token via JWT </li>
+                                     <li><code>expireTime</code> : expire time of token created by JWT  </li>
+                                 </ul>  
+                            </li><br>
+                             <!-- === -->
+                            <li>
+                                 <p class="lead"><b>Secure connection configuration</b></p>
+                                <p>Config to authenticate with <code>Stunnel SSL</code> for DBMS via <code>openSSL</code>.</p>
+                            <p>Installation:</p>
+                            <ul>
+                                <li><code>stunnel:</code> <a href="https://www.stunnel.org/downloads.html">https://www.stunnel.org/downloads.html</a></li>
+                                <li><code>openSSL:</code> <a href="https://www.openssl.org/source">https://www.openssl.org/source</a></li>
+                                <li><code>Cygwin</code> <a href="https://www.stunnel.org/downloads.html">https://www.stunnel.org/downloads.html</a> (for Windows):</li>
+                                <li><code>DBMS:</code> MySQL, Neo4j, Redis, CouchDB. (on Database Server)</li>
+                            </ul><br>
+                            <p>Generate <code>self-signed certificate</code>via <code>openSSL</code>:</p>
+                            <ul>
+                                <li>Generate a key:
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">openssl genrsa -out /etc/stunnel/key.pem 4096</code></pre>
+                                </li>
+                                <li>Generate the <code>certificate</code> with the expire days define by <code>-days </code>:
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">openssl req -new -x509 -key /etc/stunnel/key.pem -out /etc/stunnel/cert.pem -days 1826</code></pre>
+                                </li>
+                                 <li>Combine the two files: (Use Cygwin for Windows)
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">cat /etc/stunnel/key.pem /etc/stunnel/cert.pem > /etc/stunnel/private.pem
+chmod 640 /etc/stunnel/key.pem /etc/stunnel/cert.pem /etc/stunnel/private.pem</code></pre>
+                                    We will combine both the key and certificate into a single file for stunnel to use. We will also change the file permissions to restrict who has access to read these key files. Finally, we got the <code>private.pem</code> certificate.
+                                </li>
+                            </ul><br>
+                            <p>Config <code>stunnel</code>. Example with Redis (the same configuration for other DBMSs):</p>
+                             <ul>
+                                <li>Config on Database Server (server):
+                                    <ul>
+                                        <li>Find or create the <code>stunnel.conf</code> configuration file.</li>
+                                        <li>Add to <code>stunnel.conf</code> file:</li>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">[redis-server]
+pid = /var/run/stunnel.pid //UNIX
+accept = 192.168.0.1:6379
+connect = 127.0.0.1:6379
+cert = private.pem</code></pre>
+                                     <li>Restart the <code>stunnel</code></li>
+                                    </ul>
+                                     <p>By default, Redis listen to the <code>localhost</code>, on port <code>6379</code>. Our configuration has stunnel <code>accept</code> the connections on the external IP <code>(192.168.0.1:6379)</code> and forward the connections to the Redis instance listening on <code>127.0.0.1:6379</code>.</p>
+                                </li>
+                                <li>Config on Web Server (client)::
+                                   <ul>
+                                        <li>Copy the <code>private.pem</code> from Database Server to Web Server.</li>
+                                        <li>Find or create the <code>stunnel.conf</code> configuration file.</li>
+                                        <li>Add to <code>stunnel.conf</code> file:</li>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">[redis-cli]
+client = yes
+pid = /var/run/stunnel.pid //UNIX
+accept = 127.0.0.1:6379
+connect = 192.168.0.1:6379
+cert = private.pem
+</code></pre>
+                                    <li>Restart the <code>stunnel</code></li>
+                                    </ul>
+                                    <p>On a client instance the <code>accept</code> and <code>connect</code> settings are reversed from the server configuration. This tells stunnel to listen locally on port 6379 <code>(127.0.0.1:6379)</code> and forward the connections to the server host IP with port 6379 <code>(192.168.0.1:6379)</code>.</p>
+                                </li>
+                            </ul>
+                            </li>
+                        </ul>    
+                        </section>
                         <br>
                         <br>
                         <br>
@@ -225,6 +431,7 @@ dbAPI(input, function (output) {
                             <li><a href="#dbapi-client">1. dbAPI-client</a></li>
                             <li><a href="#dbapi-server">2. dbAPI-server</a></li>
                             <li><a href="#dbapi-params">3. dbAPI parameters</a></li>
+                            <li><a href="#dbconnect">4. dbConnect</a></li>
                         </ul>
                     </div>
                 </div>

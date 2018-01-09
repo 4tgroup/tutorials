@@ -102,11 +102,14 @@
                         <ul class="nav treeview-menu">
                             <li class="active"><a href="how-to-run.html">How To Run</a></li>
                             <li><a href="usage.html">Usage</a></li>
-                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
-                            <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
-                            <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -136,22 +139,28 @@
                         </section>
                         <section id="install">
                             <h2 class="page-header"><a href="#install">2. Install</a></h2>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ git clone https://gitlab.com/listingexpress/LE-components.git</code></pre>
+                                <p>Download and install DBMS <code>MySQL, SQLite, Redis, CouchDB, Neo4j</code> which you want to use.</p>
+                                <p>Clone the dbAPI from <code>GitLab</code>:</p>
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ git clone https://gitlab.com/listingexpress/LE-components.git</code></pre>
+                            
                         </section>
                         <!-- ============================================================= -->
                         <section id="setup-dbapi-server">
-                            <h2 class="page-header"><a href="#run-server">3. Setup dbAPI-server</a></h2>
+                            <h2 class="page-header"><a href="#setup-dbapi-server">3. Setup dbAPI-server</a></h2>
+                            <p class="head">To install the necessary package for <code>dbAPI-server</code>, use command <code>npm install</code>: </p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ cd LE-components/dbAPI-server
 $ npm install</code></pre>
-To know how to use <code>dbAPI-server</code> go to section <code>dbAPI</code> in left menu.</p>
+To know how to use <code>dbAPI-server</code> go to section <code>usage</code> in left menu.</p>
                         </section>
+                           <!-- ============================================================= -->
                         <section id="run-dbapi-client">
-                            <h2 class="page-header"><a href="#run-server">4. Run dbAPI-client</a></h2>
+                            <h2 class="page-header"><a href="#run-dbapi-client">4. Run dbAPI-client</a></h2>
+                            <p>To install the necessary package for <code>dbAPI-client</code>, use command <code>npm install</code>, and to use the RESTful API from <code>dbAPI-client</code>, we need to start it with command <code>npm start</code>:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ cd LE-components/dbAPI-client
 $ npm install
 $ npm start</code></pre>
-<br>Now, server start on port <code>4000</code>.<br>
-To know how to use <code>dbAPI-client</code> go to section <code>dbAPI</code> in left menu.</p>
+<p>Now, server start on port <code>4000</code>.</section></p>
+To know how to use <code>dbAPI-client</code> go to section <code>usage</code> in left menu.</p>
                         </section>
                         <br>
                         <br>

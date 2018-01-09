@@ -102,11 +102,14 @@
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
                             <li><a href="usage.html">Usage</a></li>
-                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
-                            <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
-                            <li class="active"><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li class="active"><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -119,89 +122,68 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="how-to-run">
-                        <h1 class="h1-header">RedisWrapper Module</h1>
-                        <p class="lead">To wrap the <code>set/add, get, del</code> Redis command to one input object parameter. This module executes the command via ioredis</p>
+                    <div class="content-header" id="create">
+                        <h1 class="h1-header">Create</h1>
                     </div>
                     <div class="content body">
-                        <section id="usage">
-                            <h2 class="page-header"><a href="#requirement">1. Usage</a></h2>
-                            <p class="lead">Using in <code>Node.js</code></p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var RedisWrapper = require('./dbAPI-server').RedisWrapper;
+                        <section id="sql-query">
+                            <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
+                            <p class="lead">Example, we have the use case diagram bellow:</p>
+                            <img src="../../images/dbapi_showcase.png" width="600" height="300">
+                            </br></br>
+                            <p>Then, we will create the tables. Example: We have the SQL query to create <code>candidates</code> table:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">CREATE TABLE candidates (
+    Id          INT,
+    FirstName   VARCHAR(50),
+    LastName    VARCHAR(50),
+    Gender      TINYINT(5),
+    Birthdate   DATE,
+    Location    VARCHAR(255)
+);</code></pre>
+                        <p>and want to execute this query in <code>CouchDB, Neo4j, Redis, SQLite, MySQL</code>, dbAPI will help you. See the next sections. </p>
+                        </section>
+                         <!-- ============================================================= -->
+                        <section id="dbapi-query">
+                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                                <p>dbAPI for <code>CouchDB</code> usage:</p>
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
                          
-RedisWrapper.set(input, function (output) {   //Can replace .set by .get or .del
+dbAPI(input, function (output) {
     //Handle output
 });</code></pre>
-                        <p class="lead"><code>add</code> command will execute if the variable of <code>set</code> command do not exist in database.</p>
-                        </section>
-                        <section id="input">
-                            <h2 class="page-header"><a href="#install">2. Input</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-        "variable": "name of variable" or [list of variable names],
-        "value": "Strings datatype value" or [] or {},
-        "index": [],
-        "other": []
-        }</code></pre>
-                        <p class="lead"><code>Parameters</code> meaning:</p>
-                        <ul>
-                            <li><code>variable (key): </code>contain single string variable or array variable.</li>
-                            <li><code>value: </code>contain single string value or array values or object {hkey:hvalue} (Hashes datatype).</li>
-                            <li><code>index: </code>contain the index of command
-                                <ul>
-                                    <code>set</code> command:
-                                    <li><code>[0]: </code>insert values to the head of the list.</li>
-                                    <li><code>[-1]: </code>insert values to the tail of the list.</li>
-                                    <li><code>["pivot"]: </code>insert value to BEFORE|AFTER (default AFTER) <code>pivot</code> value.</li>
-                                    <li><code>[10, 20, 30]: </code>define score for corresponding values in <code>value</code>.</li>
-                                    <code>get</code> command:
-                                    <li><code>[index]: </code>get a value in list with an index position.</li>
-                                    <li><code>[startidx, stopidx]: </code>get values in list/sorted set with an index range.</li>
-                                    <li><code>["hkey1","hkey2","hkey3"]: </code>get a values in hash with index keys.</li>
-                                    <code>del</code> command:
-                                    <li><code>[0]: </code>remove the 1st element.</li>
-                                    <li><code>[-1]: </code>remove the last element.</li>
-                                    <li><code>[index]: </code>
-                                        <ul>
-                                            <li><code>index > 0</code> - Remove elements equal to value moving from head to tail.</li>
-                                            <li><code>index < 0</code> - Remove elements equal to value moving from tail to head.</li>
-                                            <li><code>index = 0</code> - Remove all elements equal to value.</li>
-                                        </ul>
-                                    </li>
-
-                                    <li><code>[10, 20]: </code>removes all elements in the sorted set stored at key with rank between startidx and stopidx</li>
-                                    <li><code>["hkey1","hkey2","hkey3"]: </code>removes the specified hkeys from the hash stored at variable (key). </li>
-                                </ul>
-                            </li>
-                            <li><code>other: </code>contain the other information like command option.
-                                <ul>
-                                    <li><code>["EX", seconds]:</code> expire time in seconds</li>
-                                    <li><code>["PX", milliseconds]:</code> expire time in milliseconds</li>
-                                    <li><code>["BEFORE|AFTER"]:</code> insert value BEFORE|AFTER a pivot to list.</li>
-                                    <li><code>["WITHSCORES"]:</code> get score of corresponding members in sorted set.</li>
-                                    <li>...</li>
-                                </ul>
-                            </li>
-                        </ul>
+                            <p>with the <code>input</code>:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
+    "requestID": "REQUEST_ID_TOKEN",
+    "metadata": {
+        "dbinfo": {
+            "DBMS": "couchdb",
+            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"" 
+        },
+        "tbinfo": ""
+    },
+    "data": {
+        "SQLtype":"create",
+        "format": "text",
+        "szSQL": "CREATE TABLE candidates (id INT, firstname VARCHAR(50), gender TINYINT(5), Birthdate DATE, Location VARCHAR(255));"
+    },
+    "others": {
+        "execution": "async" 
+    }
+}</code></pre>
+                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j/redis/mysql/sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config"</code> or <code>"connectionString"</code> information (See <code>Usage</code> for more detail).</p>
+                         <p>Continue to create for 4 table left (same syntax with example).</p>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="output">
-                            <h2 class="page-header"><a href="#run-server">3. Output</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
-                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
-  "results":[],
-  "status":"error_code",
-  "message":"error_message/warning_message"
-}</code></pre>
-                        <code>Status error</code> response:
-                        <ul>
-                            <li> <code>0 - success.</code></li>
-                            <li> <code>199 - warning.</code></li>
-                            <li> <code>400 - client error.</code></li>
-                            <li> <code>500 - server error.</code></li>
-                            <li> <code>status of Redis execution error response.</code></li>
-                        </section>
-                       <br>
+                        <br>
                         <br>
                         <br>
                         <br>
@@ -212,10 +194,9 @@ RedisWrapper.set(input, function (output) {   //Can replace .set by .get or .del
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">SQLConverter Module</a></li>
-                            <li><a href="#usage">1. Usage</a></li>
-                            <li><a href="#input">2. Input</a></li>
-                            <li><a href="#output">3. Output</a></li>
+                            <li class="h1 active custom-title"><a href="#create">Create</a></li>
+                            <li><a href="#sql-query">1. SQL query</a></li>
+                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
                         </ul>
                     </div>
                 </div>

@@ -102,11 +102,14 @@
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
                             <li><a href="usage.html">Usage</a></li>
-                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
-                            <li><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li class="active"><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
-                            <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li class="active"><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -119,29 +122,35 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="how-to-run">
-                        <h1 class="h1-header">SQLConverter Module</h1>
-                        <p class="lead">To <code>convert & execute</code> the SQL query in other DBMS. Supported: <code>MySQL, SQLite, CouchDB, Neo4j, Redis</code>.</p>
+                    <div class="content-header" id="alter">
+                        <h1 class="h1-header">Alter</h1>
                     </div>
                     <div class="content body">
-                        <section id="usage">
-                            <h2 class="page-header"><a href="#requirement">1. Usage</a></h2>
-                            <p class="lead">Using in <code>Node.js</code></p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var SQLConverter = require('./dbAPI-server').SQLConverter;
+                        <section id="sql-query">
+                            <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
+                            <p class="lead">We also use <code>alter</code> query to modify data.</p>
+                            <p>Update the constraint <code>NOT NULL</code> for <code>title</code> column:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">ALTER TABLE Jobs MODIFY COLUMN title TEXT NOT NULL;</code></pre>
+                            <p>Update relationship between <code>jobs</code> and <code>employers</code> tables:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">ALTER TABLE Jobs ADD CONSTRAINT rel_job_of FOREIGN KEY (EmployerId) REFERENCES Employers(Id);</code></pre>
+                        <p>To execute those queries in <code>CouchDB, Neo4j, Redis, SQLite, MySQL</code>, dbAPI will help you. See the next sections. </p>
+                        </section>
+                         <!-- ============================================================= -->
+                        <section id="dbapi-query">
+                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                                <p>dbAPI for <code>CouchDB</code> usage</p>
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
                          
-SQLConverter(input, function (output) {
+dbAPI(input, function (output) {
     //Handle output
 });</code></pre>
-                        </section>
-                        <section id="input">
-                            <h2 class="page-header"><a href="#install">2. Input</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
+                            <p>with the <code>input</code>:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
     "requestID": "REQUEST_ID_TOKEN",
     "metadata": {
         "dbinfo": {
-            "DBMS": "mysql/sqlite/couchdb/neo4j/redis",
-            "cFile": "CONFIG_FILE_PATCH",
+            "DBMS": "couchdb",
+            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json",
             "config":{
                 "pin": "",
                 "protocol": "",
@@ -150,55 +159,35 @@ SQLConverter(input, function (output) {
                 "password": "",
                 "database": ""
                 },
-            "connectionString":"CONNECTION_STRING" 
+            "connectionString":"" 
         },
         "tbinfo": ""
     },
     "data": {
-        "SQLtype":"create/select/insert/update/delete/alter/index",
+        "SQLtype":"alter",
         "format": "text",
-        "szSQL": "SQL_QUERY_STRING"
+        "szSQL": "ALTER TABLE Jobs MODIFY COLUMN title TEXT NOT NULL;"
     },
     "others": {
-        "execution": "async/sync" //Default is async (currently implement for async only)
+        "execution": "async" 
     }
 }</code></pre>
-                        <p class="lead">The <code>requestID, metadata</code> params are used in <code>dbConnect module</code> to connect to DBMS. See <a href="dbconnect-module.html">dbConnect module</a> for detail.</p>
+                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j/redis/mysql/sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file.</p>
+                         <p>Support features:</p>
+                         <ul>
+                             <li><code>Neo4j</code>: supported <code>NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY</code>
+                                <ul>
+                                    <li><p><code>NOT NULL</code> SQL input (support update on one property each query) example:</p><pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">ALTER TABLE Jobs MODIFY COLUMN title TEXT NOT NULL;</code></pre></li>
+                                    <li><p><code>UNIQUE</code> SQL input (support update on one property each query) example:</p><pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">ALTER TABLE Jobs ADD CONSTRAINT UC_Jobs UNIQUE (Title);</code></pre></li>
+                                    <li><p><code>PRIMARY KEY</code> SQL input example:</p><pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">CREATE CONSTRAINT ON (jobs:jobs) ASSERT (jobs.id, jobs.firstname, jobs.lastname) IS NODE KEY;</code></pre></li>
+                                    <li><p><code>FOREIGN KEY</code> SQL input example:</p><pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">ALTER TABLE Jobs ADD CONSTRAINT rel_job_of FOREIGN KEY (EmployerId) REFERENCES Employers(Id);</code></pre></li>
+                                </ul>
+                             </li>
+                             <li><code>CouchDB, Redis</code>: Not support.</li>
+                         </ul>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="output">
-                            <h2 class="page-header"><a href="#run-server">3. Output</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
-                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">output = {
-      "requestID": "REQUEST_ID_TOKEN",
-      "metadata": {
-        "tbinfo": []
-      },
-      "data": {
-        "format": "json",
-        "results": []
-      },
-      "others": {
-        "status": "ERROR_STATUS",
-        "message": "ERROR_MESSAGE/WARNING_MESSAGE",
-        "metrics": {
-          "elapsedTime": "TOTAL_TIME_PERFORM",  //milliseconds
-          "executionTime": "EXECUTE_QUERY_TIME", //milliseconds
-          "resultCount": "NUMBER_ELEMENT_OF_RESULT",
-          "resultSize": "SIZE_OF_RESULT"        //bytes
-        }
-      }
-    }</code></pre>
-                        <code>Status error</code> response:
-                        <ul>
-                            <li> <code>0 - success.</code></li>
-                            <li> <code>199 - warning.</code></li>
-                            <li> <code>400 - client error.</code></li>
-                            <li> <code>500 - server error.</code></li>
-                            <li> <code>status of DBMS execution error response - DBMS execution error.</code></li>
-                        </ul>
-                        </section>
-                       <br>
+                        <br>
                         <br>
                         <br>
                         <br>
@@ -209,10 +198,9 @@ SQLConverter(input, function (output) {
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">SQLConverter Module</a></li>
-                            <li><a href="#usage">1. Usage</a></li>
-                            <li><a href="#input">2. Input</a></li>
-                            <li><a href="#output">3. Output</a></li>
+                            <li class="h1 active custom-title"><a href="#how-to-run">Alter</a></li>
+                            <li><a href="#sql-query">1. SQL query</a></li>
+                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
                         </ul>
                     </div>
                 </div>

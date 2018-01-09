@@ -77,7 +77,7 @@
                             <li><a href="../multilingual-controller/admin-module.html">Admin Module</a></li>
                         </ul>
                     </li>
-                    <li class="treeview active">
+                    <li class="treeview">
                         <a href="#">
                             <span>vnSegmenter</span>
                             <span class="pull-right-container">
@@ -85,14 +85,14 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li class="active"><a href="how-to-run.html">How To Run</a></li>
-                            <li><a href="usage.html">Usage</a></li>
-                            <li ><a href="results.html">Results</a> </li>
+                            <li><a href="../vn-segmenter/how-to-run.html">How To Run</a></li>
+                            <li><a href="../vn-segmenter/usage.html">Usage</a></li>
+                            <li ><a href="../vn-segmenter/results.html">Results</a> </li>
                         </ul>
                     </li>
                     <li><a href="#advice">1-m search</a></li>
                     <li><a href="#layout">Buyer-seller messaging</a></li>
-                     <li class="treeview">
+                     <li class="treeview active">
                         <a href="#">
                             <span>dbAPI</span>
                             <span class="pull-right-container">
@@ -100,16 +100,16 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                            <li><a href="../dbAPI/how-to-run.html">How To Run</a></li>
-                            <li><a href="../dbAPI/usage.html">Usage</a></li>
-                            <li><a href="../dbAPI/create.html">Create</a></li>
-                            <li><a href="../dbAPI/alter.html">Alter</a></li>
-                            <li><a href="../dbAPI/index.html">Index</a></li>
-                            <li><a href="../dbAPI/insert.html">Insert</a></li>
-                            <li><a href="../dbAPI/update.html">Update</a></li>
-                            <li><a href="../dbAPI/delete.html">Delete</a></li>
-                            <li><a href="../dbAPI/select.html">Select</a></li>
-                            <li><a href="../dbAPI/rediseasy-module.html">RedisEasy module</a></li>
+                            <li><a href="how-to-run.html">How To Run</a></li>
+                            <li><a href="usage.html">Usage</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li class="active"><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -122,31 +122,93 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="how-to-run">
-                        <h1 class="h1-header">How to run</h1>
+                    <div class="content-header" id="select">
+                        <h1 class="h1-header">Select</h1>
                     </div>
                     <div class="content body">
-                        <section id="requirement">
-                            <h2 class="page-header"><a href="#requirement">1. Requirement</a></h2>
-                            <ul>
-                                <li><b>Node.js:</b> <a href="https://nodejs.org" target="_blank">https://nodejs.org</a> - Version 7.0.0 or later</li>
-                            </ul>
-                            <i>Note: If you want use train dictionary API, it is ONLY supported for Unix operating systems.</i>
+                        <section id="sql-query">
+                            <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
+                            <p class="lead">SQL Select query:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">SELECT j.id, j.Title AS JobTitle, j.Salary AS JobSalary, e.CompanyName
+FROM Jobs j, Employers e
+WHERE (j.EmployerId = e.Id) AND (j.Category = 'IT-Software') AND 
+      (j.PostDate BETWEEN '2017-08-01 00:00:00' AND '2017-10-01 00:00:00')
+ORDER BY j.Id DESC
+LIMIT 2;
+</code></pre>
                         </section>
-                        <section id="install">
-                            <h2 class="page-header"><a href="#install">2. Install</a></h2>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ git clone https://gitlab.com/4t_group/LangPro.git</code></pre>
+                         <!-- ============================================================= -->
+                        <section id="dbapi-query">
+                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                                <p>dbAPI for <code>CouchDB</code> usage:</p>
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
+                         
+dbAPI(input, function (output) {
+    //Handle output
+});</code></pre>
+                            <p>with the <code>input</code>:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
+    "requestID": "REQUEST_ID_TOKEN",
+    "metadata": {
+        "dbinfo": {
+            "DBMS": "couchdb",
+            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"" 
+        },
+        "tbinfo": ""
+    },
+    "data": {
+        "SQLtype":"select",
+        "format": "text",
+        "szSQL": "SELECT j.id, j.Title AS JobTitle, j.Salary AS JobSalary, e.CompanyName FROM Jobs j, Employers e WHERE (j.EmployerId = e.Id) AND (j.Category = 'IT-Software') AND (j.PostDate BETWEEN '2017-08-01 00:00:00' AND '2017-10-01 00:00:00') ORDER BY j.Id DESC LIMIT 2;"
+    },
+    "others": {
+        "execution": "async" 
+    }
+}</code></pre>
+                         <p>To execute the SQL create query in other DBMS, change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j/redis/mysql/sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file.</p>
+                         <p>Support features:</p>
+                         <ul>
+                            <li><code>Neo4j</code>:
+                                <ul>
+                                    <li><p>Supported:</p> </li>
+                                        <ul>
+                                            <li><p>Operator: =, !=, <, <=, >, >=, IN, NOT IN, BETWEEN AND, LIKE, AND, OR</p></li>
+                                            <li><p>Subquery: 1 level subquery with 1 field in Select clause. Example: Select candidates with location is New York and they applied to at least 3 IT-Software employers.</p>
+                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">SELECT FirstName, LastName, Gender, Location
+FROM Candidates
+WHERE (Location = 'New York') AND 3 <= (SELECT COUNT(ec.EmployerId) AS empCount
+                            FROM Employer_Candidate ec, Employers e 
+                            WHERE (ec.EmployerId = e.Id) AND (Candidates.Id = ec.CandidateId)
+                            AND e.Industry = 'IT-Software');</code></pre>
+                                            </li>
+                                        </ul> 
+                                    <li><p>Not support:</p> 
+                                        <ul>
+                                            <li><p>Operator: EXISTS, NOT EXISTS, ANY, ALL</p></li>
+                                            <li><p>Subquery: Two or more fields in select clause of subquery.</p></li>
+                                        </ul> 
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><code>CouchDB</code>:supported by <a href="https://nolanlawson.github.io/pouchdb-find"> pouchdb-find</a>
+                                <ul>
+                                    <li><p>Supported: =, !=, <, <=, >, >=, IN, NOT IN, BETWEEN AND, LIKE, AND, OR</p> </li>
+                                    <li><p>Not support: Subquery, DISTINCT, JOINS, UNIONS, GROUP BY, mixed ORDER BY (asc and desc in the same time)</p> </li>
+                                </ul>
+                            </li>
+                            <li><code>Redis</code>: supported by <a href="https://github.com/RedBeardLab/rediSQL">rediSQL module</a></li>
+                         </ul>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="run-server">
-                            <h2 class="page-header"><a href="#run-server">3. Run server</a></h2>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ cd LangPro/Final/sources/vnSegmenter.js
-$ cd server
-$ npm install
-$ npm start</code></pre>
-<br>Now, server start on port <code>3000</code>.<br>
-To know how to use <code>vnSegmenter.js</code> go to section <code>Usage</code> in left menu.</p>
-                        </section>
                         <br>
                         <br>
                         <br>
@@ -158,10 +220,9 @@ To know how to use <code>vnSegmenter.js</code> go to section <code>Usage</code> 
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">How To Run</a></li>
-                            <li><a href="#requirement">1. Requirement</a></li>
-                            <li><a href="#install">2. Install</a></li>
-                            <li><a href="#run-server">3. Run server</a></li>
+                            <li class="h1 active custom-title"><a href="#select">Select</a></li>
+                            <li><a href="#sql-query">1. SQL query</a></li>
+                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
                         </ul>
                     </div>
                 </div>

@@ -102,11 +102,14 @@
                         <ul class="nav treeview-menu">
                             <li><a href="how-to-run.html">How To Run</a></li>
                             <li><a href="usage.html">Usage</a></li>
-                            <li><a href="sqlparser-module.html">SQLParser module</a></li>
-                            <li class="active"><a href="sqlmapper-module.html">SQLMapper module</a></li>
-                            <li><a href="sqlconverter-module.html">SQLConverter module</a></li>
-                            <li><a href="dbconnect-module.html">dbConnect module</a></li>
-                            <li><a href="rediswrapper-module.html">RedisWrapper module</a></li>
+                            <li><a href="create.html">Create</a></li>
+                            <li class="active"><a href="insert.html">Insert</a></li>
+                            <li><a href="update.html">Update</a></li>
+                            <li><a href="delete.html">Delete</a></li>
+                            <li><a href="select.html">Select</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="alter.html">Alter</a></li>
+                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -119,179 +122,68 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="how-to-run">
-                        <h1 class="h1-header">SQLMapper Module</h1>
-                        <p class="lead">To <code>map</code> the <code>AST</code> JSON to the other DBMS query. DBMS mapping supported: <code>CouchDB (PouchDB & Mango query), Neo4j(cypher query)</code>.</p>
+                    <div class="content-header" id="insert">
+                        <h1 class="h1-header">Insert</h1>
                     </div>
                     <div class="content body">
-                        <section id="usage">
-                            <h2 class="page-header"><a href="#requirement">1. Usage</a></h2>
-                            <p class="lead">Using in <code>Node.js</code></p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var SQLParser = require('./dbAPI-server').SQLMapper;
+                        <section id="sql-query">
+                            <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
+                            <p class="lead">After creating table, we will insert data to those tables:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">-------insert into candidates table-------
+INSERT INTO Candidates (FirstName, LastName, Gender, Birthdate, Location) 
+VALUES ('John','Johnson',1,'1999-02-05','Ohio'), ('Dinana','White',0,'1995-11-12','New York');
 
-//CouchDB                            
-SQLMapper.couchdb(SQLtype, connection, ast, function (err, result) {
-    //Handle err & result
-});
-
-//Neo4j                            
-SQLMapper.neo4j(SQLtype, ast, function (err, result) {
-    //Handle err & result
-});</code></pre>
+-------insert into jobs table-------    
+INSERT INTO Jobs(Title, Description, Salary, Category, PostDate, ExpireDate, EmployerId) 
+VALUES  ('Business Analyst','Analysis Business Logic.....','800 – 1500 USD','IT-Software','2017-09-01','2017-09-30', 1),
+        ('Premium Banking Assistant','Maintain excellent customer relations.....','Negotiate','Banking','2017-09-11','2017-10-30', 1)</code></pre>
                         </section>
-                        <section id="input">
-                            <h2 class="page-header"><a href="#install">2. Input</a></h2>
-                            <code>Parameters</code> meaning:
-                        <ul>
-                            <li> SQLtype: <code>create/select/insert/update/delete/alter/index</code></li>
-                            <li> connection (currently implement for <code>CouchDB</code>):<code>the connection instance</code> is created by <code>dbConnect module</code>. Used for DBMS which need to find data before mapping to <code>update/delete</code> query (like CouchDB). This param can be <code>null</code> for other case. See <a href="dbconnect-module.html">dbConnect module</a> for detail.</li>
-                            <li> ast: The <code>AST</code> JSON, ouput from <code>SQLParser module</code>. See <a href="sqlparser-module.html#output">SQLParser module</a> for detail.</li>
-                        </ul>
+                         <!-- ============================================================= -->
+                        <section id="dbapi-query">
+                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                                <p>dbAPI for <code>CouchDB</code> usage:</p>
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
+                         
+dbAPI(input, function (output) {
+    //Handle output
+});</code></pre>
+                            <p>with the <code>input</code>:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
+    "requestID": "REQUEST_ID_TOKEN",
+    "metadata": {
+        "dbinfo": {
+            "DBMS": "couchdb",
+            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json",
+            "config":{
+                "pin": "",
+                "protocol": "",
+                "host": "",
+                "user": "",
+                "password": "",
+                "database": ""
+                },
+            "connectionString":"" 
+        },
+        "tbinfo": ""
+    },
+    "data": {
+        "SQLtype":"insert",
+        "format": "text",
+        "szSQL": "INSERT INTO Candidates (FirstName, LastName, Gender, Birthdate, Location) VALUES ('John','Johnson',1,'1999-02-05','Ohio'), ('Dinana','White',0,'1995-11-12','New York');"
+    },
+    "others": {
+        "execution": "async" 
+    }
+}</code></pre>
+                         <p>To execute the SQL create query in other DBMS, change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j/redis/mysql/sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file.</p>
+                         <p>Support features:</p>
+                         <ul>
+                             <li><code>Neo4j, CouchDB</code>: the insert query must define column before define values. Example: <code>INSERT INTO table (columnA, columnB) VALUES (valueA, valueB);</code></li>
+                             <li><code>Redis</code>: supported by <a href="https://github.com/RedBeardLab/rediSQL">rediSQL module</a></li>
+                         </ul>
+                         <p>Continue to insert data for <code>jobs</code> table with the same syntax.</p>
                         </section>
                         <!-- ============================================================= -->
-                        <section id="output">
-                            <h2 class="page-header"><a href="#run-server">3. Output</a></h2>
-                            <p class="lead">The <code>Neo4j(Cypher query) & CouchDB(Mango query)</code> mapping result: </p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">AST = {
-  "type": "statement",
-  "variant": "list",
-  "statement": [
-    {
-      "type": "statement",
-      "variant": "select",
-      "result": [
-        {
-          "type": "identifier",
-          "variant": "star",
-          "name": "*"
-        }
-      ],
-      "from": {
-        "type": "identifier",
-        "variant": "table",
-        "name": "users"
-      },
-      "where": [
-        {
-          "type": "expression",
-          "format": "binary",
-          "variant": "operation",
-          "operation": "=",
-          "left": {
-            "type": "identifier",
-            "variant": "column",
-            "name": "name"
-          },
-          "right": {
-            "type": "identifier",
-            "variant": "column",
-            "name": "John"
-          }
-        }
-      ]
-    }
-  ]
-}
-====> Neo4j Cypher: MATCH (users:users) WHERE users.name = John RETURN *
-====> CouchDB Mango: {
-                    "fields": [],
-                    "selector": {
-                        "name": {
-                            "$eq": "John"
-                        }
-                      }
-                    }</code></pre>
-<p class="lead">The <code>CouchDB(PouchDB query)</code> mapping result: </p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">AST = {
-  "type": "statement",
-  "variant": "list",
-  "statement": [
-    {
-      "type": "statement",
-      "variant": "insert",
-      "action": "insert",
-      "into": {
-        "type": "identifier",
-        "variant": "expression",
-        "format": "table",
-        "name": "users",
-        "columns": [
-          {
-            "type": "identifier",
-            "variant": "column",
-            "name": "id"
-          },
-          {
-            "type": "identifier",
-            "variant": "column",
-            "name": "name"
-          }
-        ]
-      },
-      "result": [
-        {
-          "type": "expression",
-          "variant": "list",
-          "expression": [
-            {
-              "type": "literal",
-              "variant": "decimal",
-              "value": "1"
-            },
-            {
-              "type": "identifier",
-              "variant": "column",
-              "name": "John"
-            }
-          ]
-        },
-        {
-          "type": "expression",
-          "variant": "list",
-          "expression": [
-            {
-              "type": "literal",
-              "variant": "decimal",
-              "value": "2"
-            },
-            {
-              "type": "identifier",
-              "variant": "column",
-              "name": "Diana"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-======> CouchDB PouchDB: {
-                          "table": "users",
-                          "docs": [
-                              {
-                                  "id": 1,
-                                  "name": "John"
-                              },
-                              {
-                                  "id": 2,
-                                  "name": "Diana"
-                              }
-                          ]
-                      }</code></pre>
-                                <p class="lead">The <code>error</code> response: </p>
-                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">{
-  "status":"error_code",
-  "message":"error_message/warning_message"
-}</code></pre>
-                        <code>Status error</code> response:
-                        <ul>
-                            <li> <code>0 - success.</code></li>
-                            <li> <code>199 - warning.</code></li>
-                            <li> <code>400 - client error.</code></li>
-                            <li> <code>500 - server error.</code></li>
-                            <!-- <li> <code>status of DBMS execution error response - DBMS execution error.</code></li> -->
-                        </ul>
-                        </section>
                         <br>
                         <br>
                         <br>
@@ -303,10 +195,9 @@ SQLMapper.neo4j(SQLtype, ast, function (err, result) {
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">SQLMapper Module</a></li>
-                            <li><a href="#usage">1. Usage</a></li>
-                            <li><a href="#input">2. Input</a></li>
-                            <li><a href="#output">3. Output</a></li>
+                            <li class="h1 active custom-title"><a href="#insert">Insert</a></li>
+                            <li><a href="#sql-query">1. SQL query</a></li>
+                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
                         </ul>
                     </div>
                 </div>
