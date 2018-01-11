@@ -107,9 +107,7 @@
                             <li><a href="update.html">Update</a></li>
                             <li><a href="delete.html">Delete</a></li>
                             <li><a href="select.html">Select</a></li>
-                            <li><a href="index.html">Index</a></li>
-                            <li><a href="alter.html">Alter</a></li>
-                            <li><a href="rediseasy-module.html">RedisEasy module</a></li>
+                            <li><a href="rediseasy.html">RedisEasy</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -128,8 +126,8 @@
                     <div class="content body">
                         <section id="sql-query">
                             <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
-                            <p class="lead">Example, we have the use case diagram bellow:</p>
-                            <img src="../../images/dbapi_showcase.png" width="600" height="300">
+                            <p class="lead">Example, we have the example diagram bellow:</p>
+                            <img style="display: block;margin: 0 auto;" src="../../images/dbapi_showcase.png" width="600" height="300">
                             </br></br>
                             <p>Then, we will create the tables. Example: We have the SQL query to create <code>candidates</code> table:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">CREATE TABLE candidates (
@@ -149,7 +147,17 @@
                                 <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
                          
 dbAPI(input, function (output) {
-    //Handle output
+    var status = output.others.status;
+
+    if(status == 0){
+        //Handle successful results. 
+        var rs = output.data.results;
+    } else if(status == 199){
+        //Handle results with warning
+    } else {
+        //Handle error
+        var errMsg = output.others.message;
+    }
 });</code></pre>
                             <p>with the <code>input</code>:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
@@ -157,18 +165,8 @@ dbAPI(input, function (output) {
     "metadata": {
         "dbinfo": {
             "DBMS": "couchdb",
-            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json",
-            "config":{
-                "pin": "",
-                "protocol": "",
-                "host": "",
-                "user": "",
-                "password": "",
-                "database": ""
-                },
-            "connectionString":"" 
-        },
-        "tbinfo": ""
+            "cFile": "../dbAPI-server/config/dbinfo.couchdb.json"
+        }
     },
     "data": {
         "SQLtype":"create",
@@ -179,7 +177,7 @@ dbAPI(input, function (output) {
         "execution": "async" 
     }
 }</code></pre>
-                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j/redis/mysql/sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config"</code> or <code>"connectionString"</code> information (See <code>Usage</code> for more detail).</p>
+                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config"</code> or <code>"connectionString"</code> information.</p>
                          <p>Continue to create for 4 table left (same syntax with example).</p>
                         </section>
                         <!-- ============================================================= -->
