@@ -137,7 +137,7 @@ redis.set(data); //Can replace .set by .add or .del
 
 //Get                         
 redis.get(data, function (output) {   
-    if(ouput.status == 0){
+    if(ouput.status == CONST.STATUS_OK){
         //Handle successful results
         console.log(output.results);
     }else {
