@@ -141,27 +141,26 @@
                         <p>and want to execute this query in <code>CouchDB, Neo4j, Redis, SQLite, MySQL</code>, dbAPI will help you. See the next sections. </p>
                         </section>
                          <!-- ============================================================= -->
-                        <section id="dbapi-query">
-                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                        <section id="dbapi-syntax">
+                            <h2 class="page-header"><a href="#dbapi-syntax">2. dbAPI syntax</a></h2>
                                 <p>dbAPI for <code>CouchDB</code> usage:</p>
-                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
 dbAPI(input, function (output) {
-    var status = output.others.status;
+   var status = output.others.status;
 
-    if(status == 0){
+   if(status == CONST.STATUS_OK){
         //Handle successful results. 
-        var rs = output.data.results;
-    } else if(status == 199){
+        console.log(output.data.results);
+    } else if(status == CONST.STATUS_WARNING){
         //Handle results with warning
     } else {
         //Handle error
-        var errMsg = output.others.message;
+        console.log("Error: " + output.others.message);
     }
 });</code></pre>
                             <p>with the <code>input</code>:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
-    "requestID": "REQUEST_ID_TOKEN",
     "metadata": {
         "dbinfo": {
             "DBMS": "couchdb",
@@ -169,15 +168,11 @@ dbAPI(input, function (output) {
         }
     },
     "data": {
-        "SQLtype":"create",
         "format": "text",
         "szSQL": "CREATE TABLE candidates (id INT, firstname VARCHAR(50), gender TINYINT(5), Birthdate DATE, Location VARCHAR(255));"
-    },
-    "others": {
-        "execution": "async" 
     }
 }</code></pre>
-                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config"</code> or <code>"connectionString"</code> information.</p>
+                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config", "dbInstance"</code> or <code>"connectionString"</code>.</p>
                          <p>Continue to create for 4 table left (same syntax with example).</p>
                         </section>
                         <!-- ============================================================= -->
@@ -194,7 +189,7 @@ dbAPI(input, function (output) {
                         <ul class="nav sidebar-menu">
                             <li class="h1 active custom-title"><a href="#create">Create</a></li>
                             <li><a href="#sql-query">1. SQL query</a></li>
-                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
+                            <li><a href="#dbapi-syntax">2. dbAPI syntax</a></li>
                         </ul>
                     </div>
                 </div>

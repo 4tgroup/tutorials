@@ -120,79 +120,48 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="rediseasy-module">
-                        <h1 class="h1-header">RedisEasy Module</h1>
+                    <div class="content-header" id="rediseasy">
+                        <h1 class="h1-header">RedisEasy</h1>
                         <p class="lead">To wrap the <code>set/add, get, del</code> Redis command to one input object parameter. This module executes the command via ioredis</p>
                     </div>
                     <div class="content body">
                         <section id="usage">
                             <h2 class="page-header"><a href="#usage">1. Usage</a></h2>
                             <p class="lead">Using in <code>Node.js</code></p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var redis = require('./dbAPI-server').RedisEasy;
-                         
-redis.set(input, function (output) {   //Can replace .set by .add, .get or .del
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var Redis = require('./dbAPI-client').RedisEasy;
+var redis = new Redis(); //Connect to 127.0.0.1:6379, db: 0
+//Define info => new Redis({"host":"192.168.1.1", "port":"6380", "db": 1});
 
+//Set, add, del  
+redis.set(data); //Can replace .set by .add or .del
+
+//Get                         
+redis.get(data, function (output) {   
     if(ouput.status == 0){
         //Handle successful results
-        var rs = output.results;
+        console.log(output.results);
     }else {
         //Handle error
-        var errMsg = output.message;
+        console.log("Error: " + output.message);
     }
 });</code></pre>
                         <p class="lead"><code>add</code> command will execute if the variable of <code>set</code> command do not exist in database and vice versa.</p>
                         </section>
-                        <section id="input">
-                            <h2 class="page-header"><a href="#input">2. Input</a></h2>
-                            <p class="lead">The JSON object with the format:</p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {
-        "dbinfo": {
-            "DBMS": "redis",
-            "cFile": "CONFIG_FILE_PATCH",
-            "config": {
-                "pin": "",
-                "protocol": "",
-                "host": "",
-                "port": "",
-                "user": "",
-                "password": "",
-                "database": ""
-                },
-            "connectionString":"CONNECTION_STRING" 
-        }
-    },
-    "data": {
-        "variable": "name" or [array],
-        "value": "String value" or [array] or {hash},
-        "index": [],
-        "other": []
-        }
-   }</code></pre>
-                        </section>
                         <!-- ============================================================= -->
                         <section id="example">
-                            <h2 class="page-header"><a href="#example">3. Example</a></h2>
-                        <p class="lead"><code>Set</code> command:</p>
+                            <h2 class="page-header"><a href="#example">2. Examples</a></h2>
+                            <h2 id="set" class="page-header"><a href="#set">2.1. <code>Set</code> command:</a></h2>
                         <ul>
                             <li><p><code>String</code> datatype</p>
                                 <ul>
                                     <li> <p>Set the variable <code>"var":"Hello"</code> and will expire in 10 seconds.</p>
- <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {
-        "dbinfo": {
-            "DBMS": "redis",
-            "cFile": "../config/dbinfo.redis.json"
-        }
-    },
-    "data": {
+ <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "var",
         "value": "Hello",
         "other": ["EX", 10]
-        }
-   }</code></pre>
+        };
+
+redis.set(data);</code></pre>
                                     </li>
                                 </ul>
                            </li>
@@ -200,33 +169,29 @@ redis.set(input, function (output) {   //Can replace .set by .add, .get or .del
                             <li> <p><code>Hash</code> datatype</p>
                                 <ul>
                                     <li><p>Insert the hash object <code>{"hkey1":"hval1", ...}</code> to the variable <code>hash</code>.</p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data ={
         "variable": "hash",
         "value": {"hkey1":"val1", "hkey2":"val2", "hkey3":"val3"}
-        }
-   }</code></pre>
+        };
+
+redis.set(data);</code></pre>
                                     </li>
                                 </ul>
                             </li>
                            </ul>
                                     <!-- ===== END SET ===== -->
-                            <p class="lead"><code>Add</code> command:</p>
+                            <h2 id="add" class="page-header"><a href="#add">2.2. <code>Add</code> command:</a></h2>
                             <ul>
                                 <li><p><code>List</code> datatype</p>
                                     <ul>
                                         <li> <p>Insert the (repeating and unsorted) array <code>["lval1", "lval2", "lval2"]</code> to the head of the variable <code>list</code>.</p>
- <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+ <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "list",
         "value": ["lval1", "lval2", "lval2"],
         "index": [0],
-        }
-   }</code></pre>
+        };
+
+redis.add(data);</code></pre>
                                     </li>
                                 </ul>
                            </li>
@@ -234,45 +199,41 @@ redis.set(input, function (output) {   //Can replace .set by .add, .get or .del
                             <li> <p><code>Set</code> datatype</p>
                                 <ul>
                                     <li> <p>Insert the (none-repeating and unsorted) array <code>["sval1", "sval2", "sval3"]</code> to the variable <code>set</code>.</p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "set",
         "value": ["sval1", "sval2", "sval3"]
-        }
-   }</code></pre>
+        };
+
+redis.add(data);</code></pre>
                                     </li>
                                 </ul>
                             </li>
                            </ul>
                                     <!-- ===== END ADD ===== -->
-                        <p class="lead"><code>Get</code> command:</p> 
+                        <h2 id="get" class="page-header"><a href="#get">2.3. <code>Get</code> command:</a></h2>
                            <ul>
                             <li><p> <code>String</code> datatype</p>
                                 <ul>
                                    <li><p>Get the value of the variable <code>var</code>.</p>
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
-        "variable": "var"
-        }
-   }</code></pre>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {"variable": "var"};
+
+redis.get(data, function(output){
+    //Handle output
+});</code></pre>
                                             </li>
                                         </ul>
                                     </li>
                                     <li> <code>List</code> datatype
                                         <ul>
                                            <li><p>Get values of the (repeating & unsorted) array from the variable <code>list</code> with the position range from  2 to 10.</p>
-                                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+                                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "list",
         "index": [2, 10]
-        }
-   }</code></pre>
+        };
+
+redis.get(data, function(output){
+    //Handle output
+});</code></pre>
                                             </li>
                                         </ul>
                                     </li>
@@ -282,33 +243,29 @@ redis.set(input, function (output) {   //Can replace .set by .add, .get or .del
                             <!--  -->
                            </ul>
                             <!-- ========= END GET ========-->
-                           <p class="lead"><code>Del</code> command:</p> 
+                        <h2 id="del" class="page-header"><a href="#del">2.4. <code>Del</code> command:</a></h2>
                            <ul>
                             <li><p><code>Set</code> datatype</p>
                                 <ul>
                                    <li><p>Delete the values <code>"sval1"</code> and <code>"sval3"</code> from the (non-repeating & unsorted) <code>set</code> array.</p>
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "set",
         "value": ["sval1", "sval3"]
-        }
-   </code></pre>
+        };
+
+redis.del(data);</code></pre>
                                     </li>
                                 </ul>
                             </li>
                             <li><p><code>Hash</code> datatype</p>
                                 <ul>
                                    <li><p>Delete the values of hash key <code>"hkey1"</code> and <code>"hkey2"</code> from hash object <code>hash</code>.</p>
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">params = {
-    "requestID": "REQUEST_ID_TOKEN",
-    "metadata": {...},
-    "data": {
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
         "variable": "hash",
         "index": ["hkey1", "hkey2"]
-        }
-   }</code></pre>
+        };
+
+redis.del(data);</code></pre>
                                     </li>
                                 </ul>
                             </li>
@@ -326,10 +283,14 @@ redis.set(input, function (output) {   //Can replace .set by .add, .get or .del
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">RedisEasy Module</a></li>
+                            <li class="h1 active custom-title"><a href="#rediseasy">RedisEasy</a></li>
                             <li><a href="#usage">1. Usage</a></li>
-                            <li><a href="#input">2. Input</a></li>
-                            <li><a href="#example">3. Example</a></li>
+                            <li><a href="#example">2. Examples</a>
+                                    <li><a href="#set">2.1. Set command</a></li>
+                                    <li><a href="#add">2.2. Add command</a></li>
+                                    <li><a href="#get">2.3. Get command</a></li>
+                                    <li><a href="#del">2.4. Del command</a></li>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -133,17 +133,16 @@ SET cj.Status = 'canceled', j.Title ='ABC'
 WHERE cj.JobId = j.Id AND j.EmployerId = e.Id AND e.CompanyName = 'FPT Software' AND j.Title = 'Business Analyst';</code></pre>
                         </section>
                          <!-- ============================================================= -->
-                        <section id="dbapi-query">
-                            <h2 class="page-header"><a href="#dbapi-query">2. dbAPI query</a></h2>
+                        <section id="dbapi-syntax">
+                            <h2 class="page-header"><a href="#dbapi-syntax">2. dbAPI syntax</a></h2>
                                 <p>dbAPI for <code>CouchDB</code> usage:</p>
-                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
+                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
 dbAPI(input, function (output) {
     //Handle output
 });</code></pre>
                             <p>with the <code>input</code>:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">input = {
-    "requestID": "REQUEST_ID_TOKEN",
     "metadata": {
         "dbinfo": {
             "DBMS": "couchdb",
@@ -151,12 +150,8 @@ dbAPI(input, function (output) {
         }
     },
     "data": {
-        "SQLtype":"update",
         "format": "text",
         "szSQL": "UPDATE Candidate_Job cj, Employers e, Jobs j SET cj.Status = 'canceled', j.Title ='ABC' WHERE cj.JobId = j.Id AND j.EmployerId = e.Id AND e.CompanyName = 'FPT Software' AND j.Title = 'Business Analyst';"
-    },
-    "others": {
-        "execution": "async" 
     }
 }</code></pre>
                          <p>To execute the SQL create query in other DBMS, change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file.</p>
@@ -180,7 +175,7 @@ dbAPI(input, function (output) {
                         <ul class="nav sidebar-menu">
                             <li class="h1 active custom-title"><a href="#update">Update</a></li>
                             <li><a href="#sql-query">1. SQL query</a></li>
-                            <li><a href="#dbapi-query">2. dbAPI query</a></li>
+                            <li><a href="#dbapi-syntax">2. dbAPI syntax</a></li>
                         </ul>
                     </div>
                 </div>

@@ -120,7 +120,7 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="content-header" id="how-to-run">
+                    <div class="content-header" id="usage">
                         <h1 class="h1-header">Usage</h1>
                     </div>
                     <div class="content body">
@@ -144,10 +144,20 @@
                             <h2 class="page-header"><a href="#dbapi-server">2. dbAPI-server</a></h2>
                             <p class="lead"><code>dbAPI-server</code> is a JavaScript API. Support: <code>create, select, insert, update, delete, alter, index</code> SQL action.The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
                             <code>Node.js</code> usage:
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').SQLConverter;
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
 dbAPI(input, function (output) {
-    //Handle output
+    var status = output.others.status;
+
+    if(status == CONST.STATUS_OK){
+        //Handle successful results. 
+        console.log(output.data.results);
+    } else if(status == CONST.STATUS_WARNING){
+        //Handle results with warning
+    } else {
+        //Handle error
+        console.log("Error: " + output.others.message);
+    }
 });</code></pre>
                         </section>
                         <!-- ============================================================= -->
@@ -169,7 +179,8 @@ dbAPI(input, function (output) {
                 "password": "",
                 "database": ""
                 },
-            "connectionString":"CONNECTION_STRING" 
+            "connectionString": "CONNECTION_STRING",
+            "dbInstance": CONNECTION_INSTANCE
         },
         "tbinfo": ""
     },
@@ -179,7 +190,7 @@ dbAPI(input, function (output) {
         "szSQL": "SQL_QUERY_STRING"
     },
     "others": {
-        "execution": "async/sync" //Default is async (currently implement for async only)
+        "execution": "async/sync" //Default "async"
     }
 }</code></pre>
                             <p class="lead"><code>dbAPI ouput</code> object JSON:</code></p>
@@ -224,7 +235,7 @@ dbAPI(input, function (output) {
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <!-- sidebar menu: : style can be found in sidebar.less -->
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#how-to-run">Usage</a></li>
+                            <li class="h1 active custom-title"><a href="#usage">Usage</a></li>
                             <li><a href="#dbapi-client">1. dbAPI-client</a></li>
                             <li><a href="#dbapi-server">2. dbAPI-server</a></li>
                             <li><a href="#dbapi">3. dbAPI parameters</a></li>                        
