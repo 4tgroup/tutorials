@@ -129,20 +129,18 @@
                             <h2 class="page-header"><a href="#usage">1. Usage</a></h2>
                             <p class="lead">Using in <code>Node.js</code></p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var Redis = require('./dbAPI-client').RedisEasy;
-var redis = new Redis(); //Connect to 127.0.0.1:6379, db: 0
-//Define info => new Redis({"host":"192.168.1.1", "port":"6380", "db": 1});
+var redis = new Redis(); // connect to 127.0.0.1:6379, db: 0
+// var redis = new Redis({"host":"192.168.1.1", "port":"6380", "db": 1});
 
-//Set, add, del  
+// set, add, del
 redis.set(data); //Can replace .set by .add or .del
 
-//Get                         
-redis.get(data, function (output) {   
-    if(ouput.status == CONST.STATUS_OK){
-        //Handle successful results
-        console.log(output.results);
-    }else {
-        //Handle error
-        console.log("Error: " + output.message);
+// get
+var rs = redis.get(data, function (output) {   
+    if (ouput.status == CONST.STATUS_OK){
+        return output.results;
+    } else {
+        return ({"Error":output.message});
     }
 });</code></pre>
                         <p class="lead"><code>add</code> command will execute if the variable of <code>set</code> command do not exist in database and vice versa.</p>
@@ -156,7 +154,7 @@ redis.get(data, function (output) {
                                 <ul>
                                     <li> <p>Set the variable <code>"var":"Hello"</code> and will expire in 10 seconds.</p>
  <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "var",
+        "variable": "var1",
         "value": "Hello",
         "other": ["EX", 10]
         };
@@ -169,12 +167,8 @@ redis.set(data);</code></pre>
                             <li> <p><code>Hash</code> datatype</p>
                                 <ul>
                                     <li><p>Insert the hash object <code>{"hkey1":"hval1", ...}</code> to the variable <code>hash</code>.</p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data ={
-        "variable": "hash",
-        "value": {"hkey1":"val1", "hkey2":"val2", "hkey3":"val3"}
-        };
-
-redis.set(data);</code></pre>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
+redis.set({"variable": "hash1", "value": {"hkey1":"val1", "hkey2":"val2", "hkey3":"val3"}});</code></pre>
                                     </li>
                                 </ul>
                             </li>
@@ -186,7 +180,7 @@ redis.set(data);</code></pre>
                                     <ul>
                                         <li> <p>Insert the (repeating and unsorted) array <code>["lval1", "lval2", "lval2"]</code> to the head of the variable <code>list</code>.</p>
  <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "list",
+        "variable": "list1",
         "value": ["lval1", "lval2", "lval2"],
         "index": [0],
         };
@@ -200,7 +194,7 @@ redis.add(data);</code></pre>
                                 <ul>
                                     <li> <p>Insert the (none-repeating and unsorted) array <code>["sval1", "sval2", "sval3"]</code> to the variable <code>set</code>.</p>
                                     <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "set",
+        "variable": "set1",
         "value": ["sval1", "sval2", "sval3"]
         };
 
@@ -215,25 +209,16 @@ redis.add(data);</code></pre>
                             <li><p> <code>String</code> datatype</p>
                                 <ul>
                                    <li><p>Get the value of the variable <code>var</code>.</p>
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {"variable": "var"};
-
-redis.get(data, function(output){
-    //Handle output
-});</code></pre>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
+var var1 = redis.get({"variable": "var1"});</code></pre>
                                             </li>
                                         </ul>
                                     </li>
                                     <li> <code>List</code> datatype
                                         <ul>
                                            <li><p>Get values of the (repeating & unsorted) array from the variable <code>list</code> with the position range from  2 to 10.</p>
-                                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "list",
-        "index": [2, 10]
-        };
-
-redis.get(data, function(output){
-    //Handle output
-});</code></pre>
+                                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
+var list1 = redis.get({"variable": "list1", "index": [1, 2]});</code></pre>
                                             </li>
                                         </ul>
                                     </li>
@@ -248,12 +233,8 @@ redis.get(data, function(output){
                             <li><p><code>Set</code> datatype</p>
                                 <ul>
                                    <li><p>Delete the values <code>"sval1"</code> and <code>"sval3"</code> from the (non-repeating & unsorted) <code>set</code> array.</p>
-                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "set",
-        "value": ["sval1", "sval3"]
-        };
-
-redis.del(data);</code></pre>
+                                        <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
+redis.del({"variable": "set1"});</code></pre>
                                     </li>
                                 </ul>
                             </li>
@@ -261,7 +242,7 @@ redis.del(data);</code></pre>
                                 <ul>
                                    <li><p>Delete the values of hash key <code>"hkey1"</code> and <code>"hkey2"</code> from hash object <code>hash</code>.</p>
                                         <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "hash",
+        "variable": "hash1",
         "index": ["hkey1", "hkey2"]
         };
 
