@@ -149,14 +149,11 @@
 dbAPI(input, function (output) {
    var status = output.others.status;
 
-   if(status == CONST.STATUS_OK){
-        //Handle successful results. 
-        console.log(output.data.results);
-    } else if(status == CONST.STATUS_WARNING){
-        //Handle results with warning
+   if (status == CONST.STATUS_OK){
+        return output.data.results;
     } else {
-        //Handle error
-        console.log("Error: " + output.others.message);
+        console.log("Error/Warnings: " + output.others.message);
+        return status;
     }
 });</code></pre>
                             <p>with the <code>input</code>:</p>
@@ -172,7 +169,7 @@ dbAPI(input, function (output) {
         "szSQL": "CREATE TABLE candidates (id INT, firstname VARCHAR(50), gender TINYINT(5), Birthdate DATE, Location VARCHAR(255));"
     }
 }</code></pre>
-                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. You can choose the kind of connection by <code>"config", "dbInstance"</code> or <code>"connectionString"</code>.</p>
+                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. The package support different methods of connection e.g. using direct configuration information <code>"config"</code>, pre-connected instance <code>"dbInstance"</code> or secure SSL certificate connection via <code>"connectionString"</code>.</p>
                          <p>Continue to create for 4 table left (same syntax with example).</p>
                         </section>
                         <!-- ============================================================= -->
