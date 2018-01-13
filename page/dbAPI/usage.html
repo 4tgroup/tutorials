@@ -126,37 +126,34 @@
                     <div class="content body">
                         <section id="dbapi-client">
                             <h2 class="page-header"><a href="#dbapi-client">1. dbAPI-client</a></h2>
-                            <p class="lead"><code>dbAPI-client</code> is a RESTFul API, support to <code>select</code> data from database. The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
+                            <p class="lead"><code>dbAPI-client</code> is a RESTFul API, support the <code>Select</code> query to retreive data from many different DBMS databases in client-side using the same friendly SQL syntax. The <code>input</code> and <code>output</code>format are described in section <code>dbAPI parameters</code></p>
                                     <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">• Path: <i>'/dbAPI-client/select'</i>
 • Method: <i>POST</i>
 • URL Params: <i>None</i>
 • Data Params: <i>{
-    //input: Object JSON
+    // input: JSON Object
 }</i>
 • Header required: <i>None</i>
-• Success Response:{
-    //output: Object JSON
+• Response:{
+    // output: JSON Object
 }</i>
 </code></pre>
                         </section>
                         <!-- ============================================================= -->
                         <section id="dbapi-server">
                             <h2 class="page-header"><a href="#dbapi-server">2. dbAPI-server</a></h2>
-                            <p class="lead"><code>dbAPI-server</code> is a JavaScript API. Support: <code>create, select, insert, update, delete, alter, index</code> SQL action.The <code>input</code> and <code>output</code> will be describe in <code>3. dbAPI parameters</code></p>
+                            <p class="lead"><code>dbAPI-server</code> is a JavaScript API. Support: <code>create, select, insert, update, delete, alter, index</code> SQL commands across different DBMS databases.The <code>input</code> and <code>output</code> format are described in section <code>dbAPI parameters</code></p>
                             <code>Node.js</code> usage:
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
 dbAPI(input, function (output) {
     var status = output.others.status;
 
-    if(status == CONST.STATUS_OK){
-        //Handle successful results. 
-        console.log(output.data.results);
-    } else if(status == CONST.STATUS_WARNING){
-        //Handle results with warning
+    if (status == CONST.STATUS_OK){
+        return output.data.results;
     } else {
-        //Handle error
-        console.log("Error: " + output.others.message);
+        console.log("Error/Warnings: " + output.others.message);
+        return status;
     }
 });</code></pre>
                         </section>
