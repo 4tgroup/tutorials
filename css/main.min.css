@@ -110,7 +110,8 @@ body {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    padding: 48px;
+    height: 60px;
+    padding: 20px 48px;
     background-color: #c41230;
     color: #ffffff;
     font-weight: 300;
@@ -216,7 +217,7 @@ a:focus {
     margin-bottom: 0;
     /*margin-left: 230px;*/
     border: none;
-    min-height: 50px;
+    min-height: 60px;
     border-radius: 0
 }
 
@@ -279,7 +280,7 @@ a:focus {
     float: left;
     background-color: transparent;
     background-image: none;
-    padding: 15px 15px;
+    padding: 20px 15px;
     font-family: fontAwesome
 }
 
@@ -300,6 +301,14 @@ a:focus {
     display: none
 }
 
+.main-header .navbar .nav>li>a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.navbar-custom-menu .navbar-form {
+    margin-top: 13px;
+    margin-bottom: 12px;
+}
 .main-header .navbar .nav>li.user>a>.fa,
 .main-header .navbar .nav>li.user>a>.glyphicon,
 .main-header .navbar .nav>li.user>a>.ion {
@@ -322,9 +331,9 @@ a:focus {
     transition: width .3s ease-in-out;
     display: block;
     float: left;
-    height: 50px;
+    height: 60px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 60px;
     text-align: center;
     width: 239px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
