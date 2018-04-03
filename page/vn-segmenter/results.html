@@ -101,6 +101,9 @@
                             <li>
                                 <a href="../multilingual-controller/admin-module.html">Admin Module</a>
                             </li>
+                            <li>
+                                <a href="https://itdev.expresspedia.org/mc/demo">Demo</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="treeview active">
@@ -136,14 +139,30 @@
                             </span>
                         </a>
                         <ul class="nav treeview-menu">
-                           <li><a href="../dbAPI/how-to-run.html">How To Run</a></li>
-                            <li><a href="../dbAPI/usage.html">Usage</a></li>
-                            <li><a href="../dbAPI/create.html">Create</a></li>
-                            <li><a href="../dbAPI/insert.html">Insert</a></li>
-                            <li><a href="../dbAPI/update.html">Update</a></li>
-                            <li><a href="../dbAPI/delete.html">Delete</a></li>
-                            <li><a href="../dbAPI/select.html">Select</a></li>
-                            <li><a href="../dbAPI/rediseasy.html">RedisEasy</a></li>
+                            <li>
+                                <a href="../dbAPI/how-to-run.html">How To Run</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/usage.html">Usage</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/create.html">Create</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/insert.html">Insert</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/update.html">Update</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/delete.html">Delete</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/select.html">Select</a>
+                            </li>
+                            <li>
+                                <a href="../dbAPI/rediseasy.html">RedisEasy</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -169,13 +188,17 @@
                                 <a href="#section-1">1. Datasets</a>
                             </h2>
                             <p class="lead">
-                                For evaluation, we collect datasets from the <a href="https://vlsp.hpda.vn/demo/?&lang=en" title="VLSP project" target="_blank"><code>VLSP project</code></a>.
-                                <br/> It is a collection of many articles from the "Politics – Society" section of Vietnamese newspaper
+                                For evaluation, we collect datasets from the
+                                <a href="https://vlsp.hpda.vn/demo/?&lang=en"
+                                    title="VLSP project" target="_blank">
+                                    <code>VLSP project</code>
+                                </a>.
+                                <br/> It is a collection of many articles from the "Politics – Society" section of Vietnamese
+                                newspaper
                                 <a href="https://tuoitre.vn/" title="Tuoi Tre" target="_blank">
                                     <code>"Tuổi trẻ" (The Youth)</code>.</a>
                                 <br/> All words that have been manually spell-checked and segmented by linguists from the
-                                <a href="http://www.vietlex.com/"
-                                    title="Vietnam Lexicography Center" target="_blank">
+                                <a href="http://www.vietlex.com/" title="Vietnam Lexicography Center" target="_blank">
                                     <code>Vietnam Lexicography Center</code>.</a>
                                 <br/>
                                 <br/> There are 3 datasets and a replicate of 3 without diacritics:
@@ -183,10 +206,11 @@
                             <ul>
                                 <li>The first dataset includes 7K sentences (about 2M syllables), each sentence is on one line,
                                     has no HTML tags.</li>
-                                <li>The second dataset include 27K sentences, similar to the first dataset but still has HTML tags.</li>
+                                <li>The second dataset include 27K sentences, similar to the first dataset but still has HTML
+                                    tags.</li>
                                 <li>The third dataset include 70K sentences, the same as the second dataset.</li>
-                                <li>The 7K-n, 27K-n, and 70K-n dataset includes 7K, 27K, and 70K sentences from the first, second, and third dataset respectively
-                                    but diacritics are eliminated.</li>
+                                <li>The 7K-n, 27K-n, and 70K-n dataset includes 7K, 27K, and 70K sentences from the first, second,
+                                    and third dataset respectively but diacritics are eliminated.</li>
                             </ul>
                             <p class="lead">Features of datasets:</p>
                             <ul>
@@ -206,7 +230,8 @@
                             <br/>
                             <p class="lead">
                                 Our tool,
-                                <code>vnSegmenter.js</code> gains the fastest execution time across all datasets (~5x the other fastest tool and 10x-100x the slowest one).
+                                <code>vnSegmenter.js</code> gains the fastest execution time across all datasets (~5x the other
+                                fastest tool and 10x-100x the slowest one).
                                 <code>vnTokenizer</code>seems to have the longest execution time in all datasets.
                                 <code>DongDu</code>,
                                 <code>UETsegmenter</code>,
@@ -280,7 +305,7 @@
     <script src="../../js/Chart.bundle.min.js"></script>
     <script src="../../js/docs.js"></script>
 
-    <script>      
+    <script>
         // Time chart
         var timeChartEl = document.getElementById("timeChart");
         var timeChart = new Chart(timeChartEl, {
@@ -288,37 +313,38 @@
             data: {
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
-                    label: 'vnSegmenter.js',
-                    data: [1.9, 1.9, 6.5, 6.1, 14, 13.5],
-                    backgroundColor: '#FF6384',
-                    borderColor: '#FF6384',
-                    borderWidth: 1
-                }, {
-                    label: 'UETsegmenter',
-                    data: [28.6, 27.4, 42.2, 40.6, 70.7, 63],
-                    backgroundColor: '#36A2EB',
-                    borderColor: '#36A2EB',
-                    borderWidth: 1
-                }, {
-                    label: 'vnTokenizer',
-                    data: [179.2, 21, 113.2, 78, 205.6, 135.1],
-                    backgroundColor: 'rgba(255, 206, 86, 1)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'DongDu',
-                    data: [10, 8.2, 44.1, 45.3, 83, 94.8],
-                    backgroundColor: 'rgba(75, 192, 192, 1)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'JVnTextpro',
-                    data: [15.9, 14.6, 53.8, 50.8, 111.9, 92.1],
-                    backgroundColor: 'rgba(153, 102, 255, 1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }]
+                        label: 'vnSegmenter.js',
+                        data: [1.9, 1.9, 6.5, 6.1, 14, 13.5],
+                        backgroundColor: '#FF6384',
+                        borderColor: '#FF6384',
+                        borderWidth: 1
+                    }, {
+                        label: 'UETsegmenter',
+                        data: [28.6, 27.4, 42.2, 40.6, 70.7, 63],
+                        backgroundColor: '#36A2EB',
+                        borderColor: '#36A2EB',
+                        borderWidth: 1
+                    }, {
+                        label: 'vnTokenizer',
+                        data: [179.2, 21, 113.2, 78, 205.6, 135.1],
+                        backgroundColor: 'rgba(255, 206, 86, 1)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'DongDu',
+                        data: [10, 8.2, 44.1, 45.3, 83, 94.8],
+                        backgroundColor: 'rgba(75, 192, 192, 1)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'JVnTextpro',
+                        data: [15.9, 14.6, 53.8, 50.8, 111.9, 92.1],
+                        backgroundColor: 'rgba(153, 102, 255, 1)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -330,8 +356,7 @@
                             display: true,
                             labelString: 'Time (s)'
                         }
-                    },
-                    ]
+                    }, ]
                 },
                 legend: {
                     display: true,
@@ -362,7 +387,8 @@
                     onComplete: function () {
                         var chartInstance = this.chart,
                             ctx = chartInstance.ctx;
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults
+                            .global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'bottom';
 
@@ -386,37 +412,38 @@
             data: {
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
-                    label: 'vnSegmenter.js',
-                    data: [96.8, 91.2, 95.9, 89.5, 95.8, 89.2],
-                    backgroundColor: 'rgba(255, 99, 132, 1)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1
-                }, {
-                    label: 'UETsegmenter',
-                    data: [97.9, 55.5, 98.7, 66.7, 98.5, 67.7],
-                    backgroundColor: 'rgba(54, 162, 235, 1)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'vnTokenizer',
-                    data: [97.4, 50.9, 96.8, 63.2, 96.7, 64.3],
-                    backgroundColor: 'rgba(255, 206, 86, 1)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'DongDu',
-                    data: [92.5, 53.7, 95.4, 63.6, 95.4, 64.4],
-                    backgroundColor: 'rgba(75, 192, 192, 1)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'JVnTextpro',
-                    data: [90.3, 58.6, 90, 64.5, 89.8, 65.4],
-                    backgroundColor: 'rgba(153, 102, 255,1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }]
+                        label: 'vnSegmenter.js',
+                        data: [96.8, 91.2, 95.9, 89.5, 95.8, 89.2],
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255,99,132,1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'UETsegmenter',
+                        data: [97.9, 55.5, 98.7, 66.7, 98.5, 67.7],
+                        backgroundColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'vnTokenizer',
+                        data: [97.4, 50.9, 96.8, 63.2, 96.7, 64.3],
+                        backgroundColor: 'rgba(255, 206, 86, 1)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'DongDu',
+                        data: [92.5, 53.7, 95.4, 63.6, 95.4, 64.4],
+                        backgroundColor: 'rgba(75, 192, 192, 1)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'JVnTextpro',
+                        data: [90.3, 58.6, 90, 64.5, 89.8, 65.4],
+                        backgroundColor: 'rgba(153, 102, 255,1)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -460,7 +487,8 @@
                     onComplete: function () {
                         var chartInstance = this.chart,
                             ctx = chartInstance.ctx;
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults
+                            .global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'bottom';
 
@@ -483,37 +511,38 @@
             data: {
                 labels: ["7K", "7K-n", "27K", "27K-n", "70K", "70k-n"],
                 datasets: [{
-                    label: 'vnSegmenter.js',
-                    data: [96.2, 89.5, 94.9, 87.5, 94.7, 87],
-                    backgroundColor: 'rgba(255, 99, 132, 1)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1
-                }, {
-                    label: 'UETsegmenter',
-                    data: [98, 62.3, 98.5, 70.7, 98.4, 71.5],
-                    backgroundColor: 'rgba(54, 162, 235, 1)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'vnTokenizer',
-                    data: [97.5, 59, 96.4, 68.6, 96.3, 69.3],
-                    backgroundColor: 'rgba(255, 206, 86, 1)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }, {
-                    label: 'DongDu',
-                    data: [92.7, 59.5, 95, 66.5, 95, 67],
-                    backgroundColor: 'rgba(75, 192, 192, 1)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'JVnTextpro',
-                    data: [88.9, 63.5, 88.5, 67, 88.3, 67.7],
-                    backgroundColor: 'rgba(153, 102, 255, 1)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }]
+                        label: 'vnSegmenter.js',
+                        data: [96.2, 89.5, 94.9, 87.5, 94.7, 87],
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255,99,132,1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'UETsegmenter',
+                        data: [98, 62.3, 98.5, 70.7, 98.4, 71.5],
+                        backgroundColor: 'rgba(54, 162, 235, 1)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'vnTokenizer',
+                        data: [97.5, 59, 96.4, 68.6, 96.3, 69.3],
+                        backgroundColor: 'rgba(255, 206, 86, 1)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'DongDu',
+                        data: [92.7, 59.5, 95, 66.5, 95, 67],
+                        backgroundColor: 'rgba(75, 192, 192, 1)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'JVnTextpro',
+                        data: [88.9, 63.5, 88.5, 67, 88.3, 67.7],
+                        backgroundColor: 'rgba(153, 102, 255, 1)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -560,7 +589,8 @@
                     onComplete: function () {
                         var chartInstance = this.chart,
                             ctx = chartInstance.ctx;
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults
+                            .global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'bottom';
 
