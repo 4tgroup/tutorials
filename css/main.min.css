@@ -61,7 +61,7 @@ body {
     -moz-transition: -moz-transform .3s ease-in-out, margin .3s ease-in-out;
     -o-transition: -o-transform .3s ease-in-out, margin .3s ease-in-out;
     transition: transform .3s ease-in-out, margin .3s ease-in-out;
-    margin-left: 280px;
+    margin-left: 268px;
     z-index: 820
 }
 
@@ -476,7 +476,7 @@ a:focus {
     padding-left: 14px;
     /*padding-right: 14px;*/
     min-height: 100%;
-    width: 280px;
+    width: 267.5px;
     z-index: 810;
     -webkit-transition: -webkit-transform .3s ease-in-out, width .3s ease-in-out;
     -moz-transition: -moz-transform .3s ease-in-out, width .3s ease-in-out;

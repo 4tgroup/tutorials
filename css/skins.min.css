@@ -68,7 +68,7 @@
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
     background-color: #fafafa;
-    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    box-shadow: 0 0 15px rgba(0,0,0,.25);
 }
 
 .skin-blue .user-panel>.info,
