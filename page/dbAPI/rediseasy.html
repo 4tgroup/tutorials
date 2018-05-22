@@ -201,13 +201,7 @@ var redis = new Redis(); // connect to 127.0.0.1:6379, db: 0
 redis.set(data); //Can replace .set by .add or .del
 
 // get
-var rs = redis.get(data, function (output) {   
-    if (ouput.status == CONST.STATUS_OK){
-        return output.results;
-    } else {
-        return ({"Msg":output.message});
-    }
-});</code></pre>
+var rs = redis.get(data);</code></pre>
                             <p class="lead">
                                 <code>add</code> command will execute if the variable of
                                 <code>set</code> command do not exist in database and vice versa.</p>
