@@ -180,28 +180,35 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="content-header" id="rediseasy">
-                        <h1 class="h1-header">RedisEasy</h1>
-                        <p class="lead">Provide
-                            <code>set, add, get, and del</code> command for easily interating with Redis database using the same
-                            template format. This module executes the command via 'ioredis' package</p>
+                        <h1 class="h1-header">RedisEasy-server</h1>
+                        <p class="lead">The RedisEasy-server provides
+                            <code>set, add, get, del, expire, count and clear</code> commands for easily interating with Redis database using the same template format.</p>
                     </div>
                     <div class="content body">
                         <section id="usage">
                             <h2 class="page-header">
                                 <a href="#usage">1. Usage</a>
                             </h2>
-                            <p class="lead">Using in
-                                <code>Node.js</code>
+                            <p class="lead">The RedisEasy-server usage in
+                                <code>Node.js</code>:
                             </p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var Redis = require('./dbAPI-client').RedisEasy;
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var Redis = require('./dbAPI-server').RedisEasy;
 var redis = new Redis(); // connect to 127.0.0.1:6379, db: 0
 // var redis = new Redis({"host":"192.168.1.1", "port":"6380", "db": 1});
 
-// set, add, del
-redis.set(data); //Can replace .set by .add or .del
+var data ={
+    variable: "list",
+    value: "value" 
+}
 
-// get
-var rs = redis.get(data);</code></pre>
+// set, get add, del, expire, count and clear commands
+redis.set(data, function(err, res){
+    if(err){
+        console.log("ERROR: ", err.message);
+    } else {
+        console.log("Result: ", res.results);
+    }
+});</code></pre>
                             <p class="lead">
                                 <code>add</code> command will execute if the variable of
                                 <code>set</code> command do not exist in database and vice versa.</p>
@@ -218,16 +225,14 @@ var rs = redis.get(data);</code></pre>
                             <ul>
                                 <li>
                                     <p>
-                                        <code>String</code> datatype</p>
+                                        <code>Single value</code>
+                                    </p>
                                     <ul>
                                         <li>
-                                            <p>Create variable
-                                                <code>"var1"</code> with the string value of "Hello" and expiration time of 10
-                                                seconds.</p>
+                                            <p>Initiate the 1st value for the list.</p>
                                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var data = {
-        "variable": "var1",
-        "value": "Hello",
-        "other": ["EX", 10]
+        "variable": "list1",
+        "value": "Hello"
         };
 
 redis.set(data);</code></pre>
@@ -300,13 +305,18 @@ redis.add(data);</code></pre>
                             <ul>
                                 <li>
                                     <p>
-                                        <code>String</code> datatype</p>
+                                        <code>Hash</code> datatype</p>
                                     <ul>
                                         <li>
                                             <p>Get the value of the variable
-                                                <code>var1</code>.</p>
-                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
-var var1 = redis.get({"variable": "var1"});</code></pre>
+                                                <code>hash1</code>.</p>
+                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.get({"variable": "hash1"}, function(err, res){
+    if(err){
+        console.log("ERROR: ", err.message);
+    } else {
+        console.log("Result: ", res.results);
+    }
+});</code></pre>
                                         </li>
                                     </ul>
                                 </li>
@@ -316,8 +326,13 @@ var var1 = redis.get({"variable": "var1"});</code></pre>
                                         <li>
                                             <p>Get values of the (repeating & unsorted) array from the variable
                                                 <code>list1</code> with the position range from 1 to 3.</p>
-                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
-var list1 = redis.get({"variable": "list1", "index": [1, 3]});</code></pre>
+                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.get({"variable": "list1", "index": [1, 3]}, function(err, res){
+    if(err){
+        console.log("ERROR: ", err.message);
+    } else {
+        console.log("Result: ", res.results);
+    }
+});</code></pre>
                                         </li>
                                     </ul>
                                 </li>
@@ -338,8 +353,7 @@ var list1 = redis.get({"variable": "list1", "index": [1, 3]});</code></pre>
                                     <ul>
                                         <li>
                                             <p>Delete the entire set1 variable</p>
-                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">
-redis.del({"variable": "set1"});</code></pre>
+                                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.del({"variable": "set1"});</code></pre>
                                         </li>
                                     </ul>
                                 </li>
@@ -363,6 +377,56 @@ redis.del(data);</code></pre>
                                 </li>
                             </ul>
                             <!-- ========== END DEL =======-->
+                            <h2 id="count" class="page-header">
+                                <a href="#count">2.5.
+                                    <code>Count</code> command:</a>
+                            </h2>
+                            <ul>
+                                <li>
+                                    <p>Get the number of elements of the
+                                        <code>list1</code>
+                                    </p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.count({"variable": "list1"}, function(err, res){
+    if(err){
+        console.log("ERROR: ", err.message);
+    } else {
+        console.log("Result: ", res.results);
+    }
+});</code></pre>
+                                </li>
+                            </ul>
+                            <!-- ========== END COUNT =======-->
+                            <h2 id="clear" class="page-header">
+                                <a href="#clear">2.6.
+                                    <code>Clear</code> command:</a>
+                            </h2>
+                            <ul>
+                                <li>
+                                    <p>Clear the variable
+                                        <code>list1</code>
+                                    </p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.clear({"variable": "list1"});</code></pre>
+
+                                </li>
+                            </ul>
+                            <!-- ========== END CLEAR =======-->
+                            <h2 id="expire" class="page-header">
+                                <a href="#expire">2.7.
+                                    <code>Expire</code> command:</a>
+                            </h2>
+                            <ul>
+                                <li>
+                                    <p><b>Note</b>: It's not support for RedisEasy-client.</p>
+                                </li>
+                                <li>
+                                    <p>Set the expiration time for the
+                                        <code>list1</code> in 10 seconds.
+                                    </p>
+                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">redis.expire({"variable": "list1", "other":["EX", 10]});</code></pre>
+
+                                </li>
+                            </ul>
+                            <!-- ========== END COUNT =======-->
                         </section>
                         <br>
                         <br>
@@ -394,6 +458,15 @@ redis.del(data);</code></pre>
                                 </li>
                                 <li>
                                     <a href="#del">2.4. Del command</a>
+                                </li>
+                                <li>
+                                    <a href="#count">2.5. Count command</a>
+                                </li>
+                                <li>
+                                    <a href="#clear">2.6. Clear command</a>
+                                </li>
+                                <li>
+                                    <a href="#expire">2.7. Expire command</a>
                                 </li>
                             </li>
                         </ul>
