@@ -224,12 +224,11 @@ client.set(data, function(err, res){
                             <code>Node.js</code> usage:
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
-dbAPI(input, function (output) { 
-    var status = output.others.status;
-    if (status == CONST.STATUS_OK){ //status ok is 0
+dbAPI(input, function (error, output) { 
+    if (!error){ //no error occurs
         console.log("Result: ", output.data.results);
     } else {
-        console.log("Error/Warnings: ", output.others.message);
+        console.log("Error/Warnings: ", error.others.message);
     }
 });</code></pre>
                         </section>
