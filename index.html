@@ -88,7 +88,7 @@
                         <ul class="nav treeview-menu">
                             <li><a href="page/vn-segmenter/how-to-run.html">How To Run</a></li>
                             <li><a href="page/vn-segmenter/usage.html">Usage</a></li>
-                            <li ><a href="page/vn-segmenter/results.html">Results</a> </li>
+                            <li><a href="page/vn-segmenter/results.html">Results</a> </li>
                         </ul>
                     </li>
                     <li><a href="#advice">1-m search</a></li>
@@ -108,7 +108,19 @@
                             <li><a href="page/dbAPI/update.html">Update</a></li>
                             <li><a href="page/dbAPI/delete.html">Delete</a></li>
                             <li><a href="page/dbAPI/select.html">Select</a></li>
-                            <li><a href="page/dbAPI/rediseasy.html">RedisEasy</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="page/rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="page/rediseasy/usage.html">Usage</a></li>
+                            <li><a href="page/rediseasy/rediseasy.html">Examples</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -123,18 +135,22 @@
                 <div class="col-sm-9">
                     <div class="content-header" id="lx-document">
                         <h1 class="h1-header">
-                                Listing Express Documentation
-                                <small>Version 1.0</small>
-                            </h1>
+                            Listing Express Documentation
+                            <small>Version 1.0</small>
+                        </h1>
                     </div>
                     <div class="content body">
                         <section id="introduction">
                             <h2 class="page-header"><a href="#introduction">Introduction</a></h2>
                             <p class="lead">
-                                A community side-project with the aim of providing a single, consistent platform for users to list news/ads and communicate each other across multiple domains including goods, jobs, renting, etc. Cutting-edge technologies are deployed to bring the best convenient and comfortable feelings to users while many components can be utilized for many other projects.
-                            <br>
+                                A community side-project with the aim of providing a single, consistent platform for
+                                users to list news/ads and communicate each other across multiple domains including
+                                goods, jobs, renting, etc. Cutting-edge technologies are deployed to bring the best
+                                convenient and comfortable feelings to users while many components can be utilized for
+                                many other projects.
+                                <br>
                                 Timeline: expect 1st release in Fall 2021
-                            <br>
+                                <br>
                                 Team: currently 4 members
                             </p>
                         </section>
@@ -143,7 +159,8 @@
                         <section id="technologies">
                             <h2 class="page-header"><a href="#technologies">Technologies</a></h2>
                             <ul>
-                                <li><b>Programming:</b> <code>TypeScript, MeteorJS, Angular, SemanticUI, D3.js</code></li>
+                                <li><b>Programming:</b> <code>TypeScript, MeteorJS, Angular, SemanticUI, D3.js</code>
+                                </li>
                                 <li><b>Database:</b> <code>Couchbase/CouchDB, MySQL</code></li>
                                 <li><b>Platform:</b> <code>Google Cloud Platform</code></li>
                                 <li><b>Others:</b> <code>Apache ASF, NPM, GitLab, Slack, etc.</code></li>
@@ -153,19 +170,45 @@
                         <section id="ready">
                             <h2 class="page-header"><a href="#ready">Ready components</a></h2>
                             <ul>
-                                <li><b><u>vnSegmenter:</u></b> The first JavaScript-based module that implements the fastest algorithm and utilizes the semantic-correlation scores from Google <code>word2vec</code> for word segmentation in Vietnamese. The aim is accurately identifying multisyllabic words as fast as possible since Vietnamese multisyllabic words are usually consist of a series of monosyllabic words separated by spaces.</li>
-                                <li><b><u>Multilingual controller:</u></b> A JS-based module that supports product development and deployment in multiple languages without limited to the proficiency of developer languages. Texts/messages/labels/etc. are collected and translated to be consistent across the entire project with automatic functions such as auto-scan, auto-translate, and auto-compile.</li>
-                                <li><b><u>dbAPI:</u></b> A set of unique APIs for every corresponding CRUD operations in database transactions along with the capacity to use SQL queries to execute transactions across DBMSs such as MySQL, SQLite, CouchDB, Neo4j, and Redis.</li>
+                                <li><b><u>vnSegmenter:</u></b> The first JavaScript-based module that implements the
+                                    fastest algorithm and utilizes the semantic-correlation scores from Google
+                                    <code>word2vec</code> for word segmentation in Vietnamese. The aim is accurately
+                                    identifying multisyllabic words as fast as possible since Vietnamese multisyllabic
+                                    words are usually consist of a series of monosyllabic words separated by spaces.
+                                </li>
+                                <li><b><u>Multilingual controller:</u></b> A JS-based module that supports product
+                                    development and deployment in multiple languages without limited to the proficiency
+                                    of developer languages. Texts/messages/labels/etc. are collected and translated to
+                                    be consistent across the entire project with automatic functions such as auto-scan,
+                                    auto-translate, and auto-compile.</li>
+                                <li><b><u>dbAPI:</u></b> A set of unique APIs for every corresponding CRUD operations in
+                                    database transactions along with the capacity to use SQL queries to execute
+                                    transactions across DBMSs such as MySQL, SQLite, CouchDB, Neo4j, and Redis.</li>
                             </ul>
                         </section>
                         <!-- ============================================================= -->
                         <section id="ongoing">
                             <h2 class="page-header"><a href="#ongoing">Ongoing components</a></h2>
                             <ul>
-                                <li><b><u>1-m search:</u></b> A client-side module that provide an engine to search keywords from various other websites and combine results into a display framework. Guest mode allows running directly from the user browser without any further settings.</li>
-                                <li><b><u>Buyer-seller messaging:</u></b> A JS-based module to allow the communications between buyers and sellers through encrypted alias emails to increase security. The module allows users to communicate freely before reveal the true information for a deal.</li>
-                                <li><b><u>Item pricing model:</u></b> Pricing would be a difficult task for community users in listing websites. While they can easily describe their items and choose some of attributes based on listed categories, having a reasonable price may take some work. Given the item's description, condition, brand-name... a built-in ML model is helpful for both sellers/buyers to negotiate (Stack: Gensim, TensorFlow).</li>
-                                <li><b><u>CICD:</u></b> As a main part in DevOps or Agile software development life cycle, to facilitate the automatic process in testing and deploying web-apps, we put together one among many contemporary processes that takes a step further to quality assurance of developing cloud-based apps (Stack: GitLab CI, Docker, Google cloud SDK).</li>
+                                <li><b><u>1-m search:</u></b> A client-side module that provide an engine to search
+                                    keywords from various other websites and combine results into a display framework.
+                                    Guest mode allows running directly from the user browser without any further
+                                    settings.</li>
+                                <li><b><u>Buyer-seller messaging:</u></b> A JS-based module to allow the communications
+                                    between buyers and sellers through encrypted alias emails to increase security. The
+                                    module allows users to communicate freely before reveal the true information for a
+                                    deal.</li>
+                                <li><b><u>Item pricing model:</u></b> Pricing would be a difficult task for community
+                                    users in listing websites. While they can easily describe their items and choose
+                                    some of attributes based on listed categories, having a reasonable price may take
+                                    some work. Given the item's description, condition, brand-name... a built-in ML
+                                    model is helpful for both sellers/buyers to negotiate (Stack: Gensim, TensorFlow).
+                                </li>
+                                <li><b><u>CICD:</u></b> As a main part in DevOps or Agile software development life
+                                    cycle, to facilitate the automatic process in testing and deploying web-apps, we put
+                                    together one among many contemporary processes that takes a step further to quality
+                                    assurance of developing cloud-based apps (Stack: GitLab CI, Docker, Google cloud
+                                    SDK).</li>
                             </ul>
                         </section>
                         <br>
@@ -178,7 +221,8 @@
                 <div class="col-sm-3 hidden-xs hidden-sm">
                     <div class="sidebar custom-menu-scroll" id="scrollspy">
                         <ul class="nav sidebar-menu">
-                            <li class="h1 active custom-title"><a href="#lx-document">ListingExpress© Documentation</a></li>
+                            <li class="h1 active custom-title"><a href="#lx-document">ListingExpress© Documentation</a>
+                            </li>
                             <li><a href="#introduction">Introduction</a></li>
                             <li><a href="#technologies">Technologies</a></li>
                             <li><a href="#ready">Ready components</a></li>

@@ -160,9 +160,19 @@
                             <li class="active">
                                 <a href="select.html">Select</a>
                             </li>
-                            <li>
-                                <a href="rediseasy.html">RedisEasy</a>
-                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li>
@@ -242,8 +252,10 @@ dbAPI(input, function (output) {
                                                     <, <=,>, >=, IN, NOT IN, BETWEEN AND, LIKE, AND, OR</p>
                                             </li>
                                             <li>
-                                                <p>Subquery: 1 level subquery with 1 field in Select clause. Example: Select
-                                                    candidates with location is New York and they applied to at least 3 IT-Software
+                                                <p>Subquery: 1 level subquery with 1 field in Select clause. Example:
+                                                    Select
+                                                    candidates with location is New York and they applied to at least 3
+                                                    IT-Software
                                                     employers.</p>
                                                 <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">SELECT FirstName, LastName, Gender, Location
 FROM Candidates
@@ -275,7 +287,8 @@ WHERE (Location = 'New York') AND 3 <= (SELECT COUNT(ec.EmployerId) AS empCount
                                                 <, <=,>, >=, IN, NOT IN, BETWEEN AND, LIKE, AND, OR</p>
                                         </li>
                                         <li>
-                                            <p>Not support: Subquery, DISTINCT, JOINS, UNIONS, GROUP BY, mixed ORDER BY (asc
+                                            <p>Not support: Subquery, DISTINCT, JOINS, UNIONS, GROUP BY, mixed ORDER BY
+                                                (asc
                                                 and desc in the same time)</p>
                                         </li>
                                     </ul>

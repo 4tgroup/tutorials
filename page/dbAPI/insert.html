@@ -160,9 +160,19 @@
                             <li>
                                 <a href="select.html">Select</a>
                             </li>
-                            <li>
-                                <a href="rediseasy.html">RedisEasy</a>
-                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li>
@@ -188,7 +198,8 @@
                                 <a href="#sql-query">1. SQL query</a>
                             </h2>
                             <p class="lead">After creating table, we will insert data to those tables:</p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">-------insert into candidates table-------
+                            <pre
+                                class="hierarchy bring-up"><code class="language-bash" data-lang="bash">-------insert into candidates table-------
 INSERT INTO Candidates (FirstName, LastName, Gender, Birthdate, Location) 
 VALUES ('John','Johnson',1,'1999-02-05','Ohio'), ('Dinana','White',0,'1995-11-12','New York');
 
@@ -232,7 +243,8 @@ dbAPI(input, function (output) {
                             <p>Support features:</p>
                             <ul>
                                 <li>
-                                    <code>Neo4j, CouchDB</code>: the insert query must define column before define values. Example:
+                                    <code>Neo4j, CouchDB</code>: the insert query must define column before define
+                                    values. Example:
                                     <code>INSERT INTO table (columnA, columnB) VALUES (valueA, valueB);</code>
                                 </li>
                                 <li>

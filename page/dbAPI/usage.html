@@ -160,9 +160,19 @@
                             <li>
                                 <a href="select.html">Select</a>
                             </li>
-                            <li>
-                                <a href="rediseasy.html">RedisEasy</a>
-                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li ><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li>
@@ -183,39 +193,15 @@
                         <h1 class="h1-header">Usage</h1>
                     </div>
                     <div class="content body">
-                        <section id="dbapi-client">
-                            <h2 class="page-header">
-                                <a href="#dbapi-client">1. dbAPI-client</a>
-                            </h2>
-                            <p class="lead">
-                                <code>dbAPI-client</code> supports the <code>RedisEasy-client</code>. It provides the <code>set, add, get, del, count and clear</code> commands. 
-You can create the RedisEasy-client instance by the syntax below:
-                            </p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">const REClient = require('REClient');
-var params = {
-    name: "test",
-    bMem: 1,
-    targetDomain: ""
-}
-const client = new REClient(params);
-
-client.set(data, function(err, res){
-    if(err){
-        console.log("ERROR: ", err.message);
-    } else {
-        console.log("Result: ", res.results);
-    }
-});</code></pre>
-                        <p class="lead">For more example about the syntax, see the RedisEasy examples section in the left side menu.</p>
-                        </section>
                         <!-- ============================================================= -->
                         <section id="dbapi-server">
                             <h2 class="page-header">
-                                <a href="#dbapi-server">2. dbAPI-server</a>
+                                <a href="#dbapi-server">1. dbAPI-server</a>
                             </h2>
                             <p class="lead">
                                 <code>dbAPI-server</code> is a JavaScript API, supporting
-                                <code>create, select, insert, update, delete, alter, index</code> commands using SQL syntax across
+                                <code>create, select, insert, update, delete, alter, index</code> commands using SQL
+                                syntax across
                                 different DBMS databases.The
                                 <code>input</code> and
                                 <code>output</code> format are described in section
@@ -235,7 +221,7 @@ dbAPI(input, function (error, output) {
                         <!-- ============================================================= -->
                         <section id="dbapi-params">
                             <h2 class="page-header">
-                                <a href="#dbapi">3. dbAPI parameters</a>
+                                <a href="#dbapi-param">2. dbAPI parameters</a>
                             </h2>
                             <p class="lead">
                                 <code>dbAPI input</code> object JSON:</code>
@@ -327,13 +313,10 @@ dbAPI(input, function (error, output) {
                                 <a href="#usage">Usage</a>
                             </li>
                             <li>
-                                <a href="#dbapi-client">1. dbAPI-client</a>
+                                <a href="#dbapi-server">1. dbAPI-server</a>
                             </li>
                             <li>
-                                <a href="#dbapi-server">2. dbAPI-server</a>
-                            </li>
-                            <li>
-                                <a href="#dbapi">3. dbAPI parameters</a>
+                                <a href="#dbapi-param">2. dbAPI parameters</a>
                             </li>
                         </ul>
                     </div>

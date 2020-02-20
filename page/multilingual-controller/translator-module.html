@@ -160,9 +160,19 @@
                             <li>
                                 <a href="../dbAPI/select.html">Select</a>
                             </li>
-                            <li>
-                                <a href="../dbAPI/rediseasy.html">RedisEasy</a>
-                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li>
@@ -228,13 +238,16 @@
                             </h2>
                             <p class="lead">Click icon
                                 <code>Edit</code> in the right side of row to edit text.</p>
-                            <img class="img-responsive pad inside-image " src="images/add-t-texts-1.png" alt="Edit texts">
+                            <img class="img-responsive pad inside-image " src="images/add-t-texts-1.png"
+                                alt="Edit texts">
                             <p class="lead">Then click
-                                <code>Save</code> to save edit texts, notification bar will be open to show result edit texts,
+                                <code>Save</code> to save edit texts, notification bar will be open to show result edit
+                                texts,
                                 <code>texts</code> in the table and
                                 <code>progress translate</code> texts will be reload. Or click
                                 <code>Cancel</code> to cancel edit texts.</p>
-                            <img class="img-responsive pad inside-image" src="images/add-t-texts-2.png" alt="Edit texts result">
+                            <img class="img-responsive pad inside-image" src="images/add-t-texts-2.png"
+                                alt="Edit texts result">
                         </section>
                         <section id="section-7">
                             <h2 class="page-header">
@@ -242,39 +255,49 @@
                             </h2>
                             <p class="lead">To auto
                                 <code>translate</code> texts and
-                                <code>check spelling</code>. Support auto translate each row or auto translate all texts not
+                                <code>check spelling</code>. Support auto translate each row or auto translate all texts
+                                not
                                 <code>translation</code>.</p>
                             <p class="lead">
                                 <b>Translated each row</b>
                             </p>
-                            <img class="img-responsive pad inside-image " src="images/auto-translated-1.png" alt="Auto translate row">
+                            <img class="img-responsive pad inside-image " src="images/auto-translated-1.png"
+                                alt="Auto translate row">
                             <p class="lead">
                                 <b>Translated all</b>
                             </p>
-                            <img class="img-responsive pad inside-image " src="images/auto-translated-2.png" alt="Auto translate all">
+                            <img class="img-responsive pad inside-image " src="images/auto-translated-2.png"
+                                alt="Auto translate all">
                             <p class="lead">Then click
-                                <code>Save</code> to save translated texts, notification bar will be open to show save texts,
+                                <code>Save</code> to save translated texts, notification bar will be open to show save
+                                texts,
                                 <code>texts</code> in the table and
                                 <code>progress translate</code> texts will be reload. Or click
                                 <code>Cancel</code> to cancel save texts.</p>
-                            <img class="img-responsive pad inside-image " src="images/auto-translated-3.png" alt="Save auto translate">
+                            <img class="img-responsive pad inside-image " src="images/auto-translated-3.png"
+                                alt="Save auto translate">
                         </section>
                         <section id="section-8">
                             <h2 class="page-header">
                                 <a href="#section-8">7. Matching texts</a>
                             </h2>
                             <p class="lead">We already take care the case that if two texts are exactly the same (by
-                                <code>Uniquify</code>), but if two texts are different by a few characters because of typos or
-                                a few words and the translator decides they are the same thing, what do we do to support?
+                                <code>Uniquify</code>), but if two texts are different by a few characters because of
+                                typos or
+                                a few words and the translator decides they are the same thing, what do we do to
+                                support?
                                 <code>Matching</code> texts will do it.
                             </p>
                             <p class="lead">Choose texts
-                                <code>matching</code> by selected/checked checkbox at the right of row. If more than 1 row are
+                                <code>matching</code> by selected/checked checkbox at the right of row. If more than 1
+                                row are
                                 selected/checked,
                                 <code>Matching</code> icon in the header row is enable.</p>
                             <p class="lead">Then click
-                                <code>Matching</code> icon, a confirmation will be show to confirm before running the function.</p>
-                            <img class="img-responsive pad inside-image " src="images/matching-text.png" alt="Matching texts">
+                                <code>Matching</code> icon, a confirmation will be show to confirm before running the
+                                function.</p>
+                            <img class="img-responsive pad inside-image " src="images/matching-text.png"
+                                alt="Matching texts">
                             <p class="lead">Now, this process will be:</p>
                             <ul style="max-width: 1140px;">
                                 <li>
@@ -285,12 +308,16 @@
                                             <code>no</code> row, go to check selected row in
                                             <code>light orange</code> status.</li>
                                         <li>If there is only
-                                            <code>1</code> row, copy overwrite its text from all languages (Vietnamese/English/…)
+                                            <code>1</code> row, copy overwrite its text from all languages
+                                            (Vietnamese/English/…)
                                             except the raw to other selected row.</li>
                                         <li>Otherwise, there are
-                                            <code>several</code> rows. In each language, choose the one that are most frequently.
-                                            If the frequency is equally, choose the first one in the order of ID. Then copy
-                                            overwrite its text from all languages except the raw to other selected row.</li>
+                                            <code>several</code> rows. In each language, choose the one that are most
+                                            frequently.
+                                            If the frequency is equally, choose the first one in the order of ID. Then
+                                            copy
+                                            overwrite its text from all languages except the raw to other selected row.
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -298,20 +325,27 @@
                                     <code>light orange</code> status:
                                     <ul>
                                         <li>If there is
-                                            <code>no</code> row, in each language, choose the one that are most frequently. If
+                                            <code>no</code> row, in each language, choose the one that are most
+                                            frequently. If
                                             the frequency is equally, choose the first one in the order of ID. Then copy
-                                            overwrite its text from all languages except the raw to other selected row.</li>
+                                            overwrite its text from all languages except the raw to other selected row.
+                                        </li>
                                         <li>If there is only
-                                            <code>1</code> row, copy overwrite its text from all languages except the raw to other
+                                            <code>1</code> row, copy overwrite its text from all languages except the
+                                            raw to other
                                             selected row.</li>
                                         <li>Otherwise, there are
-                                            <code>several</code> rows. In each language, choose the one that are most frequently.
-                                            If the frequency is equally, choose the first one in the order of ID. Then copy
-                                            overwrite its text from all languages except the raw to other selected row.</li>
+                                            <code>several</code> rows. In each language, choose the one that are most
+                                            frequently.
+                                            If the frequency is equally, choose the first one in the order of ID. Then
+                                            copy
+                                            overwrite its text from all languages except the raw to other selected row.
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
-                            <img class="img-responsive pad inside-image" src="images/matching-text-2.png" alt=" Matching texts">
+                            <img class="img-responsive pad inside-image" src="images/matching-text-2.png"
+                                alt=" Matching texts">
                         </section>
                         <br>
                         <br>

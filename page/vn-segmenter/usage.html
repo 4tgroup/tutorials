@@ -160,9 +160,19 @@
                             <li>
                                 <a href="../dbAPI/select.html">Select</a>
                             </li>
-                            <li>
-                                <a href="../dbAPI/rediseasy.html">RedisEasy</a>
-                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li>
@@ -245,13 +255,15 @@
                                     <p class="lead">Using in
                                         <code>Node.js</code>
                                     </p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var vnSegmenter = require('./vnSegmenter');</code></pre>
+                                    <pre
+                                        class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var vnSegmenter = require('./vnSegmenter');</code></pre>
                                 </li>
                                 <li>
                                     <p class="lead">Using in
                                         <code>browser</code>
                                     </p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">&lt;script src="./dist/vnSegmenter.min.js"&gt;&lt;/script&gt;</code></pre>
+                                    <pre
+                                        class="hierarchy bring-up"><code class="language-bash" data-lang="bash">&lt;script src="./dist/vnSegmenter.min.js"&gt;&lt;/script&gt;</code></pre>
                                 </li>
                                 <li>
                                     <p class="lead">Segment a
@@ -268,13 +280,15 @@ vnSegmenter.segment(text, result => {
                                     <p class="lead">Segment a
                                         <code>file</code>
                                     </p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">vnSegmenter.segmentFolder('INPUT_FILE_PATH');</code></pre>
+                                    <pre
+                                        class="hierarchy bring-up"><code class="language-bash" data-lang="bash">vnSegmenter.segmentFolder('INPUT_FILE_PATH');</code></pre>
                                 </li>
                                 <li>
                                     <p class="lead">Segment a
                                         <code>folder</code>
                                     </p>
-                                    <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">vnSegmenter.segmentFolder('INPUT_FILE_PATH', 'OUTPUT_FILE_PATH');</code></pre>
+                                    <pre
+                                        class="hierarchy bring-up"><code class="language-bash" data-lang="bash">vnSegmenter.segmentFolder('INPUT_FILE_PATH', 'OUTPUT_FILE_PATH');</code></pre>
                                 </li>
                             </ul>
                         </section>
@@ -296,7 +310,8 @@ Options:
 
                             <p class="lead">To segment
                                 <code>file</code> run</p>
-                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -i INPUT_FILE_PATH</code></pre>
+                            <pre
+                                class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -i INPUT_FILE_PATH</code></pre>
                             <p class="lead">To segment
                                 <code>folder</code> run</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">$ node ./bin/vnsegment -i INPUT_FOLDER_PATH -o OUTPUT_FOLDER_PATH

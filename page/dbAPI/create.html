@@ -88,12 +88,12 @@
                         <ul class="nav treeview-menu">
                             <li><a href="../vn-segmenter/how-to-run.html">How To Run</a></li>
                             <li><a href="../vn-segmenter/usage.html">Usage</a></li>
-                            <li ><a href="../vn-segmenter/results.html">Results</a> </li>
+                            <li><a href="../vn-segmenter/results.html">Results</a> </li>
                         </ul>
                     </li>
                     <li><a href="#advice">1-m search</a></li>
                     <li><a href="#layout">Buyer-seller messaging</a></li>
-                     <li class="treeview active">
+                    <li class="treeview active">
                         <a href="#">
                             <span>dbAPI</span>
                             <span class="pull-right-container">
@@ -108,7 +108,19 @@
                             <li><a href="update.html">Update</a></li>
                             <li><a href="delete.html">Delete</a></li>
                             <li><a href="select.html">Select</a></li>
-                            <li><a href="rediseasy.html">RedisEasy</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <span>RedisEasy</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="nav treeview-menu">
+                            <li><a href="../rediseasy/how-to-run.html">How To Run</a></li>
+                            <li><a href="../rediseasy/usage.html">Usage</a></li>
+                            <li><a href="../rediseasy/example.html">Examples</a></li>
                         </ul>
                     </li>
                     <li><a href="#faq">FAQ</a></li>
@@ -128,9 +140,11 @@
                         <section id="sql-query">
                             <h2 class="page-header"><a href="#sql-query">1. SQL query</a></h2>
                             <p class="lead">Example, we have the example diagram bellow:</p>
-                            <img style="display: block;margin: 0 auto;" src="../../images/dbapi_showcase.png" width="600" height="300">
+                            <img style="display: block;margin: 0 auto;" src="../../images/dbapi_showcase.png"
+                                width="600" height="300">
                             </br></br>
-                            <p>Then, we will create the tables. Example: We have the SQL query to create <code>candidates</code> table:</p>
+                            <p>Then, we will create the tables. Example: We have the SQL query to create
+                                <code>candidates</code> table:</p>
                             <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">CREATE TABLE candidates (
     Id          INT,
     FirstName   VARCHAR(50),
@@ -139,13 +153,14 @@
     Birthdate   DATE,
     Location    VARCHAR(255)
 );</code></pre>
-                        <p>and want to execute this query in <code>CouchDB, Neo4j, Redis, SQLite, MySQL</code>, dbAPI will help you. See the next sections. </p>
+                            <p>and want to execute this query in <code>CouchDB, Neo4j, Redis, SQLite, MySQL</code>,
+                                dbAPI will help you. See the next sections. </p>
                         </section>
-                         <!-- ============================================================= -->
+                        <!-- ============================================================= -->
                         <section id="dbapi-syntax">
                             <h2 class="page-header"><a href="#dbapi-syntax">2. dbAPI syntax</a></h2>
-                                <p>dbAPI for <code>CouchDB</code> usage:</p>
-                                <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
+                            <p>dbAPI for <code>CouchDB</code> usage:</p>
+                            <pre class="hierarchy bring-up"><code class="language-bash" data-lang="bash">var dbAPI = require('./dbAPI-server').dbAPI;
                          
 dbAPI(input, function (output) {
    var status = output.others.status;
@@ -170,8 +185,14 @@ dbAPI(input, function (output) {
         "szSQL": "CREATE TABLE candidates (id INT, firstname VARCHAR(50), gender TINYINT(5), Birthdate DATE, Location VARCHAR(255));"
     }
 }</code></pre>
-                         <p>If you want to execute the SQL create query in other DBMS, just change the <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code> or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS configuration file. The package support different methods of connection e.g. using direct configuration information <code>"config"</code>, pre-connected instance <code>"dbInstance"</code> or secure SSL certificate connection via <code>"connectionString"</code>.</p>
-                         <p>Continue to create for 4 table left (same syntax with example).</p>
+                            <p>If you want to execute the SQL create query in other DBMS, just change the
+                                <code>"DBMS"</code> name from <code>couchdb</code> to <code>neo4j, redis, mysql</code>
+                                or <code>sqlite</code>. Then change the <code>cFile</code> to corresponding DBMS
+                                configuration file. The package support different methods of connection e.g. using
+                                direct configuration information <code>"config"</code>, pre-connected instance
+                                <code>"dbInstance"</code> or secure SSL certificate connection via
+                                <code>"connectionString"</code>.</p>
+                            <p>Continue to create for 4 table left (same syntax with example).</p>
                         </section>
                         <!-- ============================================================= -->
                         <br>
