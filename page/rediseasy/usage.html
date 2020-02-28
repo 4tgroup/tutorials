@@ -189,6 +189,7 @@ redis.set(data, function(err, res){
      } else {
         console.log("Result: ", res.result);
     }
+    redis.close(); // close the current connection
 });</code></pre>
                             <p class="lead">For more example about the syntax, see the RedisEasy examples section in the
                                 left side menu.</p>
