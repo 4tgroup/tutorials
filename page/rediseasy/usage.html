@@ -190,7 +190,14 @@ redis.set(data, function(err, res){
         console.log("Result: ", res.result);
     }
     redis.close(); // close the current connection
-});</code></pre>
+});
+
+// Promise style
+redis.set(data)
+     .then(res => console.log("Result: ", res.result))
+     .catch(err => console.log("ERROR: ", err.message));
+     .finally(()=> redis.close());
+</code></pre>
                             <p class="lead">For more example about the syntax, see the RedisEasy examples section in the
                                 left side menu.</p>
                         </section>
@@ -218,13 +225,21 @@ let data = {
     value: "some-value" 
 }
 
+// Callback style
 client.set(data, function(err, res){
     if(err){
         console.log("ERROR: ", err.message);
     } else {
         console.log("Result: ", res.result);
     }
-});</code></pre>
+});
+
+// Promise style
+client.set(data)
+     .then(res => console.log("Result: ", res.result))
+     .catch(err => console.log("ERROR: ", err.message));
+     .finally(()=> redis.close());
+</code></pre>
                             <p class="lead">For more information, please refer the RedisEasy-client documents in Redis repository.</p>
                         </section>
                         <!-- ============================================================= -->
